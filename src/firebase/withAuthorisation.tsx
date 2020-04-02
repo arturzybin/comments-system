@@ -16,7 +16,7 @@ export const withAuthorisation = (condition: TCondition) => (Component: React.FC
       const authUser = useSelector((state: IGlobalState) => state.authUser)
 
       if (!condition(authUser)) {
-         history.push(ROUTES.LOG_IN)
+         history.push(ROUTES.SIGN_IN)
       }
 
       return authUser ? <Component {...props} /> : null

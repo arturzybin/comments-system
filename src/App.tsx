@@ -6,7 +6,7 @@ import * as ROUTES from './constants/routes'
 
 import { NavBar } from './components/NavBar';
 import { CommentsPage } from './components/pages/CommentsPage';
-import { LogInPage } from './components/pages/LogInPage';
+import { SignInPage } from './components/pages/SignInPage';
 import { AccountPage } from './components/pages/AccountPage';
 import { SignUpPage } from './components/pages/SignUpPage';
 import { PasswordForgetPage } from './components/pages/PasswordForgetPage';
@@ -24,7 +24,7 @@ export const App: React.FC = () => {
          <hr/>
 
          <Route exact path={ROUTES.COMMENTS} component={CommentsPage}/>
-         <Route path={ROUTES.LOG_IN} component={LogInPage}/>
+         <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
          <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
          <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
          <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
