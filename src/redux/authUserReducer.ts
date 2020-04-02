@@ -1,5 +1,5 @@
 import { CHANGE_AUTH_USER } from "./types";
-import { TAuthUser } from "../constants/types";
+import { TAuthUser } from "../constants/typescript-types";
 
 
 interface IAction {

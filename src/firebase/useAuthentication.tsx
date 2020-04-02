@@ -1,9 +1,9 @@
 import { useEffect, useContext } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { TAuthUser } from '../constants/types'
+import { TAuthUser } from '../constants/typescript-types'
 import { changeAuthUser } from '../redux/actions'
-import { FirebaseContext } from './Firebase'
+import { FirebaseContext } from './FirebaseContext'
 
 export function useAuthentication() {
    const dispatch = useDispatch()

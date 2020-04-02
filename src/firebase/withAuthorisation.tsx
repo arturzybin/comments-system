@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { TAuthUser, IGlobalState } from '../constants/types'
+import { TAuthUser, IGlobalState } from '../constants/typescript-types'
 
 import * as ROUTES from '../constants/routes'
 

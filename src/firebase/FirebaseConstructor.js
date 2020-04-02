@@ -1,5 +1,3 @@
-import React from 'react'
-
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
@@ -17,7 +15,7 @@ const config = {
 };
 
 
-export class Firebase {
+export class FirebaseConstructor {
    constructor() {
       app.initializeApp(config)
 
@@ -34,12 +32,10 @@ export class Firebase {
 
    doPasswordReset = () => this.auth.sendPasswordResetEmail()
 
-   doPasswordUpdate = () => this.auth.currentUser.updatePassword()
+   doPasswordUpdate = (password) => this.auth.currentUser.updatePassword(password)
 
    // *** Database API ***
    user = (uid) => this.db.ref(`users/${uid}`)
 
    users = () => this.db.ref('users')
 }
-
-export const FirebaseContext = React.createContext(new Firebase())
