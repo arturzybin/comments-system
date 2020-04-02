@@ -30,7 +30,7 @@ export class FirebaseConstructor {
 
    doSignOut = () => this.auth.signOut()
 
-   doPasswordReset = () => this.auth.sendPasswordResetEmail()
+   doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email)
 
    doPasswordUpdate = (password) => this.auth.currentUser.updatePassword(password)
 

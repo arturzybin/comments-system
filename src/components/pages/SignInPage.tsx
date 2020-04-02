@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import validator from 'email-validator';
 
 import { FirebaseContext } from '../../firebase/FirebaseContext'
@@ -10,7 +10,6 @@ export const SignInPage: React.FC = () => {
    const history = useHistory()
    const firebase = useContext(FirebaseContext)
 
-   const [username, setUsername] = useState<string>('')
    const [email, setEmail] = useState<string>('')
    const [password, setPassword] = useState<string>('')
    const [error, setError] = useState<Error | null>(null)
@@ -27,7 +26,6 @@ export const SignInPage: React.FC = () => {
                .set({ email })
          })
          .then(() => {
-            setUsername('')
             setEmail('')
             setPassword('')
             setError(null)
@@ -44,6 +42,7 @@ export const SignInPage: React.FC = () => {
    return (
       <>
          <h2>Sign In</h2>
+
          <form onSubmit={handleSubmit}>
             <input
                name="email"
@@ -65,6 +64,10 @@ export const SignInPage: React.FC = () => {
 
             {error && <p>{error.message}</p>}
          </form>
+         
+         <p>
+            Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign up</Link>
+         </p>
       </>
    )
 }
