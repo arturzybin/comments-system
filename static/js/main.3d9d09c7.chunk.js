@@ -1,0 +1,2 @@
+(this["webpackJsonpcomments-system"]=this["webpackJsonpcomments-system"]||[]).push([[0],{3:function(e,t,n){e.exports=n(9)},9:function(e,t,n){"use strict";n.r(t);var c=n(0),s=n.n(c),r=n(2),o=(n(8),function(){return s.a.createElement("div",null,"App")});Object(r.render)(s.a.createElement(s.a.StrictMode,null,s.a.createElement(o,null)),document.getElementById("root"))}},[[3,1,2]]]);
+//# sourceMappingURL=main.3d9d09c7.chunk.js.map
