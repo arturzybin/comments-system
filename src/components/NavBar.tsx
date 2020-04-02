@@ -15,7 +15,6 @@ export const NavBar: React.FC = () => {
    return (
       <nav className="navbar">
          {authUser ? <AuthNavBar /> : <NonAuthNavBar />}
-         <SignOutButton />
       </nav>
    )
 }
@@ -29,6 +28,7 @@ const AuthNavBar: React.FC = () => (
       <li>
          <Link to={ROUTES.ACCOUNT}>Account</Link>
       </li>
+      <SignOutButton />
    </ul>
 )
 
