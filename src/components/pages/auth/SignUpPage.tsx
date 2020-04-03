@@ -40,14 +40,14 @@ export const SignUpPage: React.FC = () => {
    }
 
 
-   let usernameClassName = 'auth-form__input'
-   let emailClassName = 'auth-form__input'
-   let passwordOneClassName = 'auth-form__input'
-   let passwordTwoClassName = 'auth-form__input'
-   usernameClassName += (username && username.length < 3) ? ' auth-form__input_invalid' : ''
-   emailClassName += (email && !validator.validate(email)) ? ' auth-form__input_invalid' : ''
-   passwordOneClassName += (passwordOne && passwordOne.length < 6) ? ' auth-form__input_invalid' : ''
-   passwordTwoClassName += (passwordTwo && passwordTwo !== passwordOne) ? ' auth-form__input_invalid' : ''
+   let usernameClassName = 'form__input'
+   let emailClassName = 'form__input'
+   let passwordOneClassName = 'form__input'
+   let passwordTwoClassName = 'form__input'
+   usernameClassName += (username && username.length < 3) ? ' form__input_invalid' : ''
+   emailClassName += (email && !validator.validate(email)) ? ' form__input_invalid' : ''
+   passwordOneClassName += (passwordOne && passwordOne.length < 6) ? ' form__input_invalid' : ''
+   passwordTwoClassName += (passwordTwo && passwordTwo !== passwordOne) ? ' form__input_invalid' : ''
 
    const isFormInvalid =
       passwordOne !== passwordTwo ||
@@ -57,9 +57,9 @@ export const SignUpPage: React.FC = () => {
 
 
    return (
-      <div className="auth-form-background">
-         <div className="auth-form">
-            <h2 className="auth-form__title">Sign Up</h2>
+      <div className="form-background">
+         <div className="form">
+            <h2 className="form__title">Sign Up</h2>
 
             <form onSubmit={handleSubmit}>
                <input
@@ -94,14 +94,14 @@ export const SignUpPage: React.FC = () => {
                   type="password"
                   placeholder="Confirm Password"
                />
-               <button disabled={isFormInvalid} type="submit" className="auth-form__input auth-form__submit-button">
+               <button disabled={isFormInvalid} type="submit" className="form__input form__button">
                   Sign Up
                </button>
 
-               {error && <p className="auth-form__error">{error.message}</p>}
+               {error && <p className="form__error">{error.message}</p>}
             </form>
 
-            <p className="auth-form__link">
+            <p className="form__link">
                Already have an account? <Link to={ROUTES.SIGN_IN}>Sign in</Link>
             </p>
          </div>

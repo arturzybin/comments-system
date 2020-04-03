@@ -15,7 +15,7 @@ export const SignOutButton: React.FC = () => {
    }
 
    return (
-      <button onClick={handleClick} className="auth-form__input auth-form__submit-button">
+      <button onClick={handleClick} className="form__input form__button">
          Sign Out
       </button>
    )

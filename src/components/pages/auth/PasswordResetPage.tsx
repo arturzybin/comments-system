@@ -28,16 +28,16 @@ export const PasswordResetPage: React.FC = () => {
    }
 
 
-   let emailClassName = 'auth-form__input'
-   emailClassName += (email && !validator.validate(email)) ? ' auth-form__input_invalid' : ''
+   let emailClassName = 'form__input'
+   emailClassName += (email && !validator.validate(email)) ? ' form__input_invalid' : ''
 
    const isFormInvalid = !validator.validate(email)
 
 
    return (
-      <div className="auth-form-background">
-         <div className="auth-form">
-            <h2 className="auth-form__title">Reset Password</h2>
+      <div className="form-background">
+         <div className="form">
+            <h2 className="form__title">Reset Password</h2>
 
             <form onSubmit={handleReset}>
                <input
@@ -48,14 +48,14 @@ export const PasswordResetPage: React.FC = () => {
                   type="text"
                   placeholder="Email Address"
                />
-               <button disabled={isFormInvalid} type="submit" className="auth-form__input auth-form__submit-button">
+               <button disabled={isFormInvalid} type="submit" className="form__input form__button">
                   Send reset email
                </button>
 
-               {error && <p className="auth-form__error">{error.message}</p>}
+               {error && <p className="form__error">{error.message}</p>}
             </form>
 
-            <p className="auth-form__link">
+            <p className="form__link">
                Recall password? <Link to={ROUTES.SIGN_IN}>Sign in</Link>
             </p>
          </div>
