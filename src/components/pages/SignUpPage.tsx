@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import validator from 'email-validator';
 
 import { FirebaseContext } from '../../firebase/FirebaseContext'
@@ -40,7 +40,16 @@ export const SignUpPage: React.FC = () => {
    }
 
 
-   const isInvalid =
+   let usernameClassName = 'auth-form__input'
+   let emailClassName = 'auth-form__input'
+   let passwordOneClassName = 'auth-form__input'
+   let passwordTwoClassName = 'auth-form__input'
+   usernameClassName += (username && username.length < 3) ? ' auth-form__input_invalid' : ''
+   emailClassName += (email && !validator.validate(email)) ? ' auth-form__input_invalid' : ''
+   passwordOneClassName += (passwordOne && passwordOne.length < 6) ? ' auth-form__input_invalid' : ''
+   passwordTwoClassName += (passwordTwo && passwordTwo !== passwordOne) ? ' auth-form__input_invalid' : ''
+
+   const isFormInvalid =
       passwordOne !== passwordTwo ||
       passwordOne.length < 6 ||
       !validator.validate(email) ||
@@ -48,43 +57,54 @@ export const SignUpPage: React.FC = () => {
 
 
    return (
-      <>
-         <h2>Sign Up</h2>
-         <form onSubmit={handleSubmit}>
-            <input
-               name="username"
-               value={username}
-               onChange={(event) => setUsername(event.target.value)}
-               type="text"
-               placeholder="Full Name"
-            />
-            <input
-               name="email"
-               value={email}
-               onChange={(event) => setEmail(event.target.value)}
-               type="text"
-               placeholder="Email Address"
-            />
-            <input
-               name="passwordOne"
-               value={passwordOne}
-               onChange={(event) => setPasswordOne(event.target.value)}
-               type="password"
-               placeholder="Password"
-            />
-            <input
-               name="passwordTwo"
-               value={passwordTwo}
-               onChange={(event) => setPasswordTwo(event.target.value)}
-               type="password"
-               placeholder="Confirm Password"
-            />
-            <button disabled={isInvalid} type="submit">
-               Sign Up
-            </button>
+      <div className="auth-form-background">
+         <div className="auth-form">
+            <h2 className="auth-form__title">Sign Up</h2>
 
-            {error && <p>{error.message}</p>}
-         </form>
-      </>
+            <form onSubmit={handleSubmit}>
+               <input
+                  name="username"
+                  className={usernameClassName}
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                  type="text"
+                  placeholder="Username"
+               />
+               <input
+                  name="email"
+                  className={emailClassName}
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  type="text"
+                  placeholder="Email Address"
+               />
+               <input
+                  name="passwordOne"
+                  className={passwordOneClassName}
+                  value={passwordOne}
+                  onChange={(event) => setPasswordOne(event.target.value)}
+                  type="password"
+                  placeholder="Password"
+               />
+               <input
+                  name="passwordTwo"
+                  className={passwordTwoClassName}
+                  value={passwordTwo}
+                  onChange={(event) => setPasswordTwo(event.target.value)}
+                  type="password"
+                  placeholder="Confirm Password"
+               />
+               <button disabled={isFormInvalid} type="submit" className="auth-form__input auth-form__submit-button">
+                  Sign Up
+               </button>
+
+               {error && <p>{error.message}</p>}
+            </form>
+
+            <p className="auth-form__link">
+               Already have an account? <Link to={ROUTES.SIGN_IN}>Sign in</Link>
+            </p>
+         </div>
+      </div>
    )
 }

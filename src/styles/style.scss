@@ -1,1 +1,8 @@
 @import './media';
+
+* {
+   box-sizing: border-box;
+   font-family: 'Nunito', sans-serif;
+}
+
+@import './modules/auth-form';

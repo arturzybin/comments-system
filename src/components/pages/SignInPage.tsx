@@ -31,41 +31,50 @@ export const SignInPage: React.FC = () => {
    }
 
 
-   const isInvalid = password.length < 6 || !validator.validate(email)
+   let emailClassName = 'auth-form__input'
+   let passwordClassName = 'auth-form__input'
+   emailClassName += (email && !validator.validate(email)) ? ' auth-form__input_invalid' : ''
+   passwordClassName += (password && password.length < 6) ? ' auth-form__input_invalid' : ''
+
+   const isFormInvalid = password.length < 6 || !validator.validate(email)
 
 
    return (
-      <>
-         <h2>Sign In</h2>
+      <div className="auth-form-background">
+         <div className="auth-form">
+            <h2 className="auth-form__title">Sign In</h2>
 
-         <form onSubmit={handleSubmit}>
-            <input
-               name="email"
-               value={email}
-               onChange={(event) => setEmail(event.target.value)}
-               type="text"
-               placeholder="Email Address"
-            />
-            <input
-               name="password"
-               value={password}
-               onChange={(event) => setPassword(event.target.value)}
-               type="password"
-               placeholder="Password"
-            />
-            <button disabled={isInvalid} type="submit">
-               Sign In
-            </button>
+            <form onSubmit={handleSubmit}>
+               <input
+                  name="email"
+                  className={emailClassName}
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  type="text"
+                  placeholder="Email Address"
+               />
+               <input
+                  name="password"
+                  className={passwordClassName}
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  type="password"
+                  placeholder="Password"
+               />
+               <button disabled={isFormInvalid} type="submit" className="auth-form__input auth-form__submit-button">
+                  Sign In
+               </button>
 
-            {error && <p>{error.message}</p>}
-         </form>
-         
-         <p>
-            Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign up</Link>
-         </p>
-         <p>
-            Forgot password? <Link to={ROUTES.PASSWORD_RESET}>Reset</Link>
-         </p>
-      </>
+               {error && <p>{error.message}</p>}
+            </form>
+
+            <p className="auth-form__link">
+               Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign up</Link>
+            </p>
+            <p className="auth-form__link">
+               Forgot password? <Link to={ROUTES.PASSWORD_RESET}>Reset</Link>
+            </p>
+         </div>
+      </div>
    )
 }
