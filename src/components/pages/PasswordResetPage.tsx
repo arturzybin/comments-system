@@ -5,7 +5,7 @@ import { FirebaseContext } from '../../firebase/FirebaseContext'
 import { IGlobalState } from '../../constants/typescript-types'
 
 
-export const PasswordForgetPage: React.FC = () => (
+export const PasswordResetPage: React.FC = () => (
    <>
       <h2>Reset Password</h2>
       <PasswordForgetButton />
@@ -15,7 +15,7 @@ export const PasswordForgetPage: React.FC = () => (
 
 export const PasswordForgetButton: React.FC = () => {
    const firebase = useContext(FirebaseContext)
-
+   
    const authUser = useSelector((state: IGlobalState) => state.authUser)
    const email = authUser?.email
 

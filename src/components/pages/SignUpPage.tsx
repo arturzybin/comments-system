@@ -24,8 +24,8 @@ export const SignUpPage: React.FC = () => {
          .doCreateUserWithEmailAndPassword(email, passwordOne)
          .then((authUser) => {
             firebase
-               .user(authUser.user?.uid)
-               .set({ email })
+               .userDB(authUser.user?.uid)
+               .set({ username, email })
          })
          .then(() => {
             setUsername('')

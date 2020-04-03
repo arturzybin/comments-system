@@ -20,11 +20,6 @@ export const SignInPage: React.FC = () => {
 
       firebase
          .doSignInWithEmailAndPassword(email, password)
-         .then((authUser) => {
-            firebase
-               .user(authUser.user?.uid)
-               .set({ email })
-         })
          .then(() => {
             setEmail('')
             setPassword('')
@@ -67,6 +62,9 @@ export const SignInPage: React.FC = () => {
          
          <p>
             Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign up</Link>
+         </p>
+         <p>
+            Forgot password? <Link to={ROUTES.PASSWORD_RESET}>Reset</Link>
          </p>
       </>
    )

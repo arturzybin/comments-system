@@ -25,17 +25,17 @@ export class FirebaseConstructor {
 
    // *** Auth API ***
    doCreateUserWithEmailAndPassword = (email, password) => this.auth.createUserWithEmailAndPassword(email, password)
-
+   
    doSignInWithEmailAndPassword = (email, password) => this.auth.signInWithEmailAndPassword(email, password)
-
+   
    doSignOut = () => this.auth.signOut()
-
+   
    doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email)
 
    doPasswordUpdate = (password) => this.auth.currentUser.updatePassword(password)
 
    // *** Database API ***
-   user = (uid) => this.db.ref(`users/${uid}`)
+   userDB = (uid) => this.db.ref(`users/${uid}`)
 
-   users = () => this.db.ref('users')
+   usersDB = () => this.db.ref('users')
 }

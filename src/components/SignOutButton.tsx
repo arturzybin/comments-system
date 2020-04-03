@@ -1,11 +1,21 @@
 import React, { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
+
 import { FirebaseContext } from '../firebase/FirebaseContext'
+import * as ROUTES from '../constants/routes'
+
 
 export const SignOutButton: React.FC = () => {
    const firebase = useContext(FirebaseContext)
+   const history = useHistory()
+
+   function handleClick() {
+      firebase.doSignOut()
+      history.push(ROUTES.COMMENTS)
+   }
 
    return (
-      <button onClick={firebase.doSignOut}>
+      <button onClick={handleClick}>
          Sign Out
       </button>
    )

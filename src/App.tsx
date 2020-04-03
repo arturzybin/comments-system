@@ -6,10 +6,10 @@ import * as ROUTES from './constants/routes'
 
 import { NavBar } from './components/NavBar';
 import { CommentsPage } from './components/pages/CommentsPage';
-import { SignInPage } from './components/pages/SignInPage';
 import { AccountPage } from './components/pages/AccountPage';
+import { SignInPage } from './components/pages/SignInPage';
 import { SignUpPage } from './components/pages/SignUpPage';
-import { PasswordForgetPage } from './components/pages/PasswordForgetPage';
+import { PasswordResetPage } from './components/pages/PasswordResetPage';
 
 import 'normalize.css'
 import './styles/style.scss'
@@ -17,7 +17,7 @@ import './styles/style.scss'
 
 export const App: React.FC = () => {
    useAuthentication()
-   
+
    return (
       <BrowserRouter>
          <NavBar />
@@ -27,7 +27,7 @@ export const App: React.FC = () => {
          <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
          <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
          <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
-         <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
+         <Route path={ROUTES.PASSWORD_RESET} component={PasswordResetPage}/>
       </BrowserRouter>
    );
 }

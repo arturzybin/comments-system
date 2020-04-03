@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { PasswordChangeForm } from '../PasswordChangeForm'
-import { PasswordForgetButton } from './PasswordForgetPage'
+import { PasswordForgetButton } from './PasswordResetPage'
 import { withAuthorisation } from '../../firebase/withAuthorisation'
 import { TAuthUser } from '../../constants/typescript-types'
 
