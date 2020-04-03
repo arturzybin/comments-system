@@ -10,7 +10,8 @@ import * as ROUTES from '../../../constants/routes'
 
 
 const AccountPageBase: React.FC = () => {
-   const { user: authUser, username } = useSelector((state: IGlobalState) => state.authUser)
+   let { user: authUser, username } = useSelector((state: IGlobalState) => state.authUser)
+   if (!username) username = 'Loading ...'
    const email = authUser?.email
 
    return (

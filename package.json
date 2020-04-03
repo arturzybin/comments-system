@@ -23,6 +23,7 @@
       "react-router-transition": "^2.0.0",
       "react-scripts": "3.4.1",
       "redux": "^4.0.5",
+      "redux-persist": "^6.0.0",
       "typescript": "^3.7.5"
    },
    "scripts": {
