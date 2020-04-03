@@ -1,10 +1,8 @@
 import React, { useState, useContext } from 'react'
-import { useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom';
 import validator from 'email-validator';
 
 import { FirebaseContext } from '../../firebase/FirebaseContext'
-import { IGlobalState } from '../../constants/typescript-types'
 import * as ROUTES from '../../constants/routes'
 
 
@@ -12,11 +10,10 @@ export const PasswordResetPage: React.FC = () => {
    const history = useHistory()
    const firebase = useContext(FirebaseContext)
    
-   const authUser = useSelector((state: IGlobalState) => state.authUser)
-   const authUserEmail: string = authUser?.email ? authUser.email : ''
 
-   const [email, setEmail] = useState<string>(authUserEmail)
+   const [email, setEmail] = useState<string>('')
    const [error, setError] = useState<Error | null>(null)
+
 
    function handleReset(): void {
       firebase

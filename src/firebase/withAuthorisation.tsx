@@ -12,7 +12,7 @@ export const withAuthorisation = (condition: TCondition) => (Component: React.FC
 
    const WithAuthorisation: React.FC = (props) => {
       const history = useHistory()
-      const authUser = useSelector((state: IGlobalState) => state.authUser)
+      const authUser = useSelector((state: IGlobalState) => state.authUser.user)
       const isConfirm = condition(authUser)
 
       if (!isConfirm) {

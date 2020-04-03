@@ -10,7 +10,7 @@ import commentsSrc from '../img/comments.svg'
 
 
 export const NavBar: React.FC = () => {
-   const authUser: TAuthUser = useSelector((state: IGlobalState) => state.authUser)
+   const authUser: TAuthUser = useSelector((state: IGlobalState) => state.authUser.user)
 
    return (
       <nav className="navbar">

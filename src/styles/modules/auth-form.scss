@@ -53,6 +53,18 @@
       text-align: center;
    }
 
+   &__username {
+      margin-top: rem(30);
+      margin-bottom: rem(20);
+   }
+
+   &__email {
+      margin-top: 0;
+      font-size: rem(30);
+      text-decoration: underline;
+      margin-bottom: rem(40);
+   }
+
    &__input {
       font-size: rem(20);
 
@@ -100,6 +112,14 @@
 
       &:disabled {
          cursor: default;
+      }
+      
+      a {
+         display: block;
+         height: rem(40);
+         line-height: rem(40);
+         text-decoration: none;
+         color: #000;
       }
    }
 

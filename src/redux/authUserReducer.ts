@@ -1,16 +1,26 @@
-import { CHANGE_AUTH_USER } from "./types";
-import { TAuthUser } from "../constants/typescript-types";
+import { CHANGE_AUTH_USER, SET_AUTH_USER_USERNAME } from "./types";
+import { TAuthUser, IGlobalState } from "../constants/typescript-types";
 
 
 interface IAction {
    type: string,
-   payload: TAuthUser
+   payload: TAuthUser | string
 }
 
-export const authUserReducer = (state: TAuthUser = null, action: IAction) => {
+type TState = IGlobalState['authUser']
+
+
+const INITIAL_STATE = {
+   user: null,
+   username: null
+}
+
+export const authUserReducer = (state: TState = INITIAL_STATE, action: IAction) => {
    switch(action.type) {
       case CHANGE_AUTH_USER:
-         return action.payload
+         return { user: action.payload, username: null } as TState
+      case SET_AUTH_USER_USERNAME:
+         return { ...state, username: action.payload } as TState
       default:
          return state
    }
