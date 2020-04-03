@@ -2,11 +2,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { SignOutButton } from './SignOutButton'
-
 import * as ROUTES from '../constants/routes'
 import { TAuthUser, IGlobalState } from '../constants/typescript-types'
 
+import avatarSrc from '../img/avatar.svg'
+import commentsSrc from '../img/comments.svg'
 
 
 export const NavBar: React.FC = () => {
@@ -21,27 +21,23 @@ export const NavBar: React.FC = () => {
 
 
 const AuthNavBar: React.FC = () => (
-   <ul>
-      <li>
-         <Link to={ROUTES.COMMENTS}>Comments</Link>
-      </li>
-      <li>
-         <Link to={ROUTES.ACCOUNT}>Account</Link>
-      </li>
-      <SignOutButton />
-   </ul>
+   <>
+      <Link to={ROUTES.COMMENTS} className="navbar__comments">
+         <img className="navbar__img" src={commentsSrc} alt="Comments" />
+      </Link>
+      <Link to={ROUTES.ACCOUNT} className="navbar__account">
+         <img className="navbar__img" src={avatarSrc} alt="Sign In" />
+      </Link>
+   </>
 )
 
 const NonAuthNavBar: React.FC = () => (
-   <ul>
-      <li>
-         <Link to={ROUTES.COMMENTS}>Comments</Link>
-      </li>
-      <li>
-         <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-      </li>
-      <li>
-         <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-      </li>
-   </ul>
+   <>
+      <Link to={ROUTES.COMMENTS} className="navbar__comments">
+         <img className="navbar__img" src={commentsSrc} alt="Comments" />
+      </Link>
+      <Link to={ROUTES.SIGN_IN} className="navbar__account">
+         <img className="navbar__img" src={avatarSrc} alt="Sign In" />
+      </Link>
+   </>
 )

@@ -1,0 +1,20 @@
+@import '../mixins';
+@import '../vars';
+
+.navbar {
+   position: relative;
+   z-index: 10;
+
+   padding-right: rem(20);
+
+   text-align: right;
+
+   background-color: $sea-green;
+   box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+
+   &__img {
+      height: rem(50);
+      margin: rem(8);
+      padding: rem(2);
+   }
+}

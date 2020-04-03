@@ -21,7 +21,6 @@ export const App: React.FC = () => {
    return (
       <BrowserRouter>
          <NavBar />
-         <hr/>
 
          <Route exact path={ROUTES.COMMENTS} component={CommentsPage}/>
          <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
