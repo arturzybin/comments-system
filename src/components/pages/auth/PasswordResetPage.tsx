@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import validator from 'email-validator';
 
-import { FirebaseContext } from '../../firebase/FirebaseContext'
-import * as ROUTES from '../../constants/routes'
+import { FirebaseContext } from '../../../firebase/FirebaseContext'
+import * as ROUTES from '../../../constants/routes'
 
 
 export const PasswordResetPage: React.FC = () => {

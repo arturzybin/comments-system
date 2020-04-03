@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { FirebaseContext } from '../firebase/FirebaseContext'
+import { FirebaseContext } from '../../../firebase/FirebaseContext'
 
 
 export const PasswordUpdatePage: React.FC = () => {

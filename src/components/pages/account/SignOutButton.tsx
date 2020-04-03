@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import { FirebaseContext } from '../firebase/FirebaseContext'
-import * as ROUTES from '../constants/routes'
+import { FirebaseContext } from '../../../firebase/FirebaseContext'
+import * as ROUTES from '../../../constants/routes'
 
 
 export const SignOutButton: React.FC = () => {

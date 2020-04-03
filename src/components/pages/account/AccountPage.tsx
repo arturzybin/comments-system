@@ -2,11 +2,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { SignOutButton } from '../SignOutButton'
+import { SignOutButton } from './SignOutButton'
 
-import { withAuthorisation } from '../../firebase/withAuthorisation'
-import { TAuthUser, IGlobalState } from '../../constants/typescript-types'
-import * as ROUTES from '../../constants/routes'
+import { withAuthorisation } from '../../../firebase/withAuthorisation'
+import { TAuthUser, IGlobalState } from '../../../constants/typescript-types'
+import * as ROUTES from '../../../constants/routes'
 
 
 const AccountPageBase: React.FC = () => {

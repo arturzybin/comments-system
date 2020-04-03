@@ -5,12 +5,12 @@ import { useAuthentication } from './firebase/useAuthentication';
 import * as ROUTES from './constants/routes'
 
 import { NavBar } from './components/NavBar';
-import { CommentsPage } from './components/pages/CommentsPage';
-import { SignInPage } from './components/pages/SignInPage';
-import { SignUpPage } from './components/pages/SignUpPage';
-import { PasswordResetPage } from './components/pages/PasswordResetPage';
-import { AccountPage } from './components/pages/AccountPage';
-import { PasswordUpdatePage } from './components/PasswordUpdatePage';
+import { CommentsPage } from './components/pages/comments/CommentsPage';
+import { SignInPage } from './components/pages/auth/SignInPage';
+import { SignUpPage } from './components/pages/auth/SignUpPage';
+import { PasswordResetPage } from './components/pages/auth/PasswordResetPage';
+import { AccountPage } from './components/pages/account/AccountPage';
+import { PasswordUpdatePage } from './components/pages/account/PasswordUpdatePage';
 
 import 'normalize.css'
 import './styles/style.scss'
