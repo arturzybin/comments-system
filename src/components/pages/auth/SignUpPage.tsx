@@ -98,7 +98,7 @@ export const SignUpPage: React.FC = () => {
                   Sign Up
                </button>
 
-               {error && <p>{error.message}</p>}
+               {error && <p className="auth-form__error">{error.message}</p>}
             </form>
 
             <p className="auth-form__link">

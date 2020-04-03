@@ -10,7 +10,6 @@ import { SignInPage } from './components/pages/auth/SignInPage';
 import { SignUpPage } from './components/pages/auth/SignUpPage';
 import { PasswordResetPage } from './components/pages/auth/PasswordResetPage';
 import { AccountPage } from './components/pages/account/AccountPage';
-import { PasswordUpdatePage } from './components/pages/account/PasswordUpdatePage';
 
 import 'normalize.css'
 import './styles/style.scss'
@@ -28,7 +27,6 @@ export const App: React.FC = () => {
          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
          <Route path={ROUTES.PASSWORD_RESET} component={PasswordResetPage} />
          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-         <Route path={ROUTES.PASSWORD_UPDATE} component={PasswordUpdatePage} />
       </Router>
    );
 }
