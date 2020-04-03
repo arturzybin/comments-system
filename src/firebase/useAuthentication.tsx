@@ -15,6 +15,7 @@ export function useAuthentication() {
 
          firebase.userDB(authUser?.uid).once('value')
             .then((snapshot) => {
+               if (!snapshot.val()) return
                const username = snapshot.val().username
                dispatch(setAuthUserUsername(username))
             })
