@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import validator from 'email-validator';
 
 import { FirebaseContext } from '../../firebase/FirebaseContext'
@@ -9,6 +9,7 @@ import * as ROUTES from '../../constants/routes'
 
 
 export const PasswordResetPage: React.FC = () => {
+   const history = useHistory()
    const firebase = useContext(FirebaseContext)
    
    const authUser = useSelector((state: IGlobalState) => state.authUser)
@@ -21,7 +22,10 @@ export const PasswordResetPage: React.FC = () => {
       firebase
          .doPasswordReset(email)
          .then(() => {
+            setEmail('')
             setError(null)
+
+            history.push(ROUTES.SIGN_IN)
          })
          .catch(setError)
    }
@@ -48,14 +52,14 @@ export const PasswordResetPage: React.FC = () => {
                   placeholder="Email Address"
                />
                <button disabled={isFormInvalid} type="submit" className="auth-form__input auth-form__submit-button">
-                  Sign In
+                  Send reset email
                </button>
 
                {error && <p>{error.message}</p>}
             </form>
 
             <p className="auth-form__link">
-               Recall password? <Link to={ROUTES.SIGN_IN}>Sign up</Link>
+               Recall password? <Link to={ROUTES.SIGN_IN}>Sign in</Link>
             </p>
          </div>
       </div>
