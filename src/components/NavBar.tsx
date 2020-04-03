@@ -26,7 +26,7 @@ const AuthNavBar: React.FC = () => (
          <img className="navbar__img" src={commentsSrc} alt="Comments" />
       </Link>
       <Link to={ROUTES.ACCOUNT} className="navbar__account">
-         <img className="navbar__img" src={avatarSrc} alt="Sign In" />
+         <img className="navbar__img" src={avatarSrc} alt="Account" />
       </Link>
    </>
 )
