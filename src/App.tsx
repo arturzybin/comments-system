@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { useAuthentication } from './firebase/useAuthentication';
 import * as ROUTES from './constants/routes'
@@ -19,14 +19,14 @@ export const App: React.FC = () => {
    useAuthentication()
 
    return (
-      <BrowserRouter>
+      <Router>
          <NavBar />
 
-         <Route exact path={ROUTES.COMMENTS} component={CommentsPage}/>
-         <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
-         <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
-         <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
-         <Route path={ROUTES.PASSWORD_RESET} component={PasswordResetPage}/>
-      </BrowserRouter>
+         <Route exact path={ROUTES.COMMENTS} component={CommentsPage} />
+         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+         <Route path={ROUTES.PASSWORD_RESET} component={PasswordResetPage} />
+      </Router>
    );
 }

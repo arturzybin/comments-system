@@ -18,3 +18,33 @@
       padding: rem(2);
    }
 }
+
+
+.node-enter {
+   transform: rotateX(-100deg);
+   transform-origin: top;
+
+   opacity: 0;
+}
+
+.node-enter.my-node-enter-active {
+   transform: rotateX(0deg);
+   transform-origin: top;
+
+   opacity: 1;
+   transition: opacity 250ms ease-in;
+}
+
+.node-exit {
+   transform: rotateX(0deg);
+   transform-origin: top;
+
+   opacity: 1;
+}
+
+.node-exit.my-node-exit-active {
+   transform: rotateX(-100deg);
+   transform-origin: top;
+
+   opacity: 0;
+}
