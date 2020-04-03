@@ -17,7 +17,7 @@ import './styles/style.scss'
 
 export const App: React.FC = () => {
    useAuthentication()
-
+   
    return (
       <Router>
          <NavBar />
