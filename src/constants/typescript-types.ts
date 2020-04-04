@@ -8,7 +8,8 @@ export interface IGlobalState {
    authUser: {
       user: TAuthUser,
       username: string | null
-   }
+   },
+   comments: IComment[]
 }
 
 
@@ -17,5 +18,6 @@ export interface IComment {
    authorUID: string,
    text: string,
    created: app.firestore.Timestamp,
-   likesCount: number
+   likesCount: number,
+   index?: number
 }

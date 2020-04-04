@@ -15,7 +15,7 @@ const INITIAL_STATE = {
    username: null
 }
 
-export const authUserReducer = (state: TState = INITIAL_STATE, action: IAction) => {
+export function authUserReducer (state: TState = INITIAL_STATE, action: IAction) {
    switch(action.type) {
       case CHANGE_AUTH_USER:
          return { user: action.payload, username: null } as TState

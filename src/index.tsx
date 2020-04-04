@@ -14,6 +14,7 @@ import { Firebase, FirebaseContext } from './firebase/FirebaseContext';
 
 const persistConfig = {
    key: 'root',
+   blacklist: ['comments'],
    storage,
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
