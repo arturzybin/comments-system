@@ -47,9 +47,9 @@ export const SignUpPage: React.FC = () => {
    let emailClassName = 'form__input'
    let passwordOneClassName = 'form__input'
    let passwordTwoClassName = 'form__input'
-   usernameClassName += (username && username.length < 3) ? ' form__input_invalid' : ''
+   usernameClassName += (username && username.length < 3 && username.length > 15) ? ' form__input_invalid' : ''
    emailClassName += (email && !validator.validate(email)) ? ' form__input_invalid' : ''
-   passwordOneClassName += (passwordOne && passwordOne.length < 6) ? ' form__input_invalid' : ''
+   passwordOneClassName += (passwordOne && passwordOne.length < 6 && passwordOne.length > 25) ? ' form__input_invalid' : ''
    passwordTwoClassName += (passwordTwo && passwordTwo !== passwordOne) ? ' form__input_invalid' : ''
 
    const isFormInvalid =
