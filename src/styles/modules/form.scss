@@ -5,12 +5,24 @@
    position: absolute;
    top: 0;
 
-   width: 100%;
-   min-height: 100vh;
    overflow: hidden;
+
+   width: 100%;
+   padding-top: rem(80);
+
+   text-align: center;
    // animation: swing-in-top-fwd .5s cubic-bezier(.175, .885, .320, 1.275) both;
 
    background: $sea-green;
+
+   &::before {
+      display: inline-block;
+
+      height: calc(100vh - 5rem);
+
+      content: '';
+      vertical-align: middle;
+   }
 }
 @keyframes swing-in-top-fwd {
    0% {
@@ -29,15 +41,13 @@
 
 
 .form {
-   position: absolute;
-   top: 50%;
-   right: 0;
-   left: 0;
+   display: inline-block;
+   overflow: auto;
 
    width: rem(500);
    margin: auto;
 
-   transform: translateY(-50%);
+   vertical-align: middle;
 
    border-radius: rem(50);
    background: $sea-green;

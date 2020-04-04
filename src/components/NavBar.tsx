@@ -11,14 +11,13 @@ import commentsSrc from '../img/comments.svg'
 
 export const NavBar: React.FC = () => {
    const authUser: TAuthUser = useSelector((state: IGlobalState) => state.authUser.user)
-   const isCurrentPageComments = (useLocation().pathname === ROUTES.COMMENTS)
+   const isCurrentPageComments = useLocation().pathname === ROUTES.COMMENTS
 
    const commentsClassname = (isCurrentPageComments) ? 'navbar__button navbar__button_pressed' : 'navbar__button'
    const accountClassname = (isCurrentPageComments) ? 'navbar__button' : 'navbar__button navbar__button_pressed'
 
    let username = useSelector((state: IGlobalState) => state.authUser.username)
    if (!username) username = 'Loading...'
-
 
    return (
       <nav className="navbar">
