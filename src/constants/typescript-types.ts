@@ -9,3 +9,11 @@ export interface IGlobalState {
       username: string | null
    }
 }
+
+
+export interface IComment {
+   author: string,
+   text: string,
+   timestamp: number,
+   likesCount: number
+}

@@ -1,6 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import { IComment } from '../constants/typescript-types';
 
 
 const config = {
@@ -18,11 +19,13 @@ const config = {
 export class FirebaseConstructor {
    auth: app.auth.Auth
    db: app.firestore.Firestore
+   parentURL: string
 
    constructor() {
       app.initializeApp(config)
       this.auth = app.auth()
       this.db = app.firestore()
+      this.parentURL = getParentURL()
    }
 
    // *** Auth API ***
@@ -38,4 +41,19 @@ export class FirebaseConstructor {
 
    // *** Firestore API ***
    userRef = (uid: string) => this.db.collection('users').doc(uid)
+
+   doCreateComment = (comment: IComment) => this.db.collection(this.parentURL).add(comment)
+}
+
+
+function getParentURL(): string {
+   const queryString = window.location.search.substring(1)
+   const queries = queryString.split("&")
+
+   for (let query of queries) {
+      const pair = query.split('=')
+      if (pair[0] === 'parentURL') return pair[1]
+   }
+
+   return 'default'
 }
