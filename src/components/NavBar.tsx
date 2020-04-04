@@ -14,7 +14,7 @@ export const NavBar: React.FC = () => {
    const isCurrentPageComments = (useLocation().pathname === ROUTES.COMMENTS)
 
    const commentsClassname = (isCurrentPageComments) ? 'navbar__button navbar__button_pressed' : 'navbar__button'
-   const accountClassname = (isCurrentPageComments) ? 'navbar__button navbar__button_pressed' : 'navbar__button'
+   const accountClassname = (isCurrentPageComments) ? 'navbar__button' : 'navbar__button navbar__button_pressed'
 
    let username = useSelector((state: IGlobalState) => state.authUser.username)
    if (!username) username = 'Loading...'

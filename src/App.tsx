@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import { useAuthentication } from './firebase/useAuthentication';
 import * as ROUTES from './constants/routes'
@@ -22,7 +22,10 @@ export const App: React.FC = () => {
       <Router>
          <NavBar />
 
-         <Route exact path={ROUTES.COMMENTS} component={CommentsPage} />
+         <Route exact path='/'> <Redirect to={ROUTES.COMMENTS} /> </Route>
+         <Route path={ROUTES.GITHUB_PAGES}> <Redirect to={ROUTES.COMMENTS} /> </Route>
+
+         <Route path={ROUTES.COMMENTS} component={CommentsPage} />
          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
          <Route path={ROUTES.PASSWORD_RESET} component={PasswordResetPage} />
