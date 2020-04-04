@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import app from 'firebase/app'
 
 
 export type TAuthUser = null | firebase.User
@@ -12,8 +13,9 @@ export interface IGlobalState {
 
 
 export interface IComment {
-   author: string,
+   authorUsername: string,
+   authorUID: string,
    text: string,
-   timestamp: number,
+   created: app.firestore.Timestamp,
    likesCount: number
 }
