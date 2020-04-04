@@ -20,16 +20,22 @@ export const NavBar: React.FC = () => {
 }
 
 
-const AuthNavBar: React.FC = () => (
-   <>
-      <Link to={ROUTES.COMMENTS} className="navbar__comments">
-         <img className="navbar__img" src={commentsSrc} alt="Comments" />
-      </Link>
-      <Link to={ROUTES.ACCOUNT} className="navbar__account">
-         <img className="navbar__img" src={avatarSrc} alt="Account" />
-      </Link>
-   </>
-)
+const AuthNavBar: React.FC = () => {
+   let username = useSelector((state: IGlobalState) => state.authUser.username)
+   if (!username) username = 'Loading...'
+
+   return (
+      <>
+         <Link to={ROUTES.COMMENTS} className="navbar__comments">
+            <img className="navbar__img" src={commentsSrc} alt="Comments" />
+         </Link>
+         <Link to={ROUTES.ACCOUNT} className="navbar__account">
+            {/* <img className="navbar__img" src={avatarSrc} alt="Account" /> */}
+            {username}
+         </Link>
+      </>
+   )
+}
 
 const NonAuthNavBar: React.FC = () => (
    <>
