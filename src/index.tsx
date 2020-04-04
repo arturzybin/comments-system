@@ -22,7 +22,6 @@ const store: any = createStore(persistedReducer)
 const persistor = persistStore(store)
 
 
-console.log(Firebase.parentURL)
 render(
    <React.StrictMode>
       <Provider store={store}>
