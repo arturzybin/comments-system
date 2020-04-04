@@ -12,11 +12,12 @@ export function useAuthentication() {
    useEffect(() => {
       const unsubscribe = firebase.auth.onAuthStateChanged((authUser: TAuthUser) => {
          dispatch(changeAuthUser(authUser))
+         if (!authUser) return
 
-         firebase.userDB(authUser?.uid).once('value')
-            .then((snapshot) => {
-               if (!snapshot.val()) return
-               const username = snapshot.val().username
+         firebase.userRef(authUser?.uid).get()
+            .then((doc) => {
+               if (!doc.exists) return
+               const username = doc.data()?.username
                dispatch(setAuthUserUsername(username))
             })
       })

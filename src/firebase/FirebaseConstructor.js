@@ -1,6 +1,6 @@
 import app from 'firebase/app'
 import 'firebase/auth'
-import 'firebase/database'
+import 'firebase/firestore'
 
 
 const config = {
@@ -20,7 +20,7 @@ export class FirebaseConstructor {
       app.initializeApp(config)
 
       this.auth = app.auth()
-      this.db = app.database()
+      this.db = app.firestore()
    }
 
    // *** Auth API ***
@@ -34,8 +34,6 @@ export class FirebaseConstructor {
 
    doPasswordUpdate = (password) => this.auth.currentUser.updatePassword(password)
 
-   // *** Database API ***
-   userDB = (uid) => this.db.ref(`users/${uid}`)
-
-   usersDB = () => this.db.ref('users')
+   // *** Firestore API ***
+   userRef = (uid) => this.db.collection('users').doc(uid)
 }
