@@ -44,7 +44,7 @@ export const PasswordResetPage: React.FC = () => {
                   name="email"
                   className={emailClassName}
                   value={email}
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(event) => setEmail(event.target.value.trim())}
                   type="text"
                   placeholder="Email Address"
                />

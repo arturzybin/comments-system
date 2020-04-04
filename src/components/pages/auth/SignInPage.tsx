@@ -49,7 +49,7 @@ export const SignInPage: React.FC = () => {
                   name="email"
                   className={emailClassName}
                   value={email}
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(event) => setEmail(event.target.value.trim())}
                   type="text"
                   placeholder="Email Address"
                />
@@ -57,7 +57,7 @@ export const SignInPage: React.FC = () => {
                   name="password"
                   className={passwordClassName}
                   value={password}
-                  onChange={(event) => setPassword(event.target.value)}
+                  onChange={(event) => setPassword(event.target.value.trim())}
                   type="password"
                   placeholder="Password"
                />

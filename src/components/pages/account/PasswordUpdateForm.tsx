@@ -39,7 +39,7 @@ export const PasswordUpdateForm: React.FC = () => {
             name="passwordOne"
             className={passwordOneClassName}
             value={passwordOne}
-            onChange={(event) => setPasswordOne(event.target.value)}
+            onChange={(event) => setPasswordOne(event.target.value.trim())}
             type="password"
             placeholder="New Password"
          />
@@ -47,7 +47,7 @@ export const PasswordUpdateForm: React.FC = () => {
             name="passwordTwo"
             className={passwordTwoClassName}
             value={passwordTwo}
-            onChange={(event) => setPasswordTwo(event.target.value)}
+            onChange={(event) => setPasswordTwo(event.target.value.trim())}
             type="password"
             placeholder="Confirm Password"
          />
