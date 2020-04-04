@@ -30,6 +30,7 @@
       background: linear-gradient(145deg, #76a998, #8cc9b5);
       box-shadow: rem(7) rem(7) rem(14) #699687,
       rem(-7) rem(-7) rem(14) #9de2cb;
+      transition: box-shadow 300ms ease-in-out;
 
       &_pressed {
          cursor: default;
