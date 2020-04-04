@@ -23,8 +23,11 @@ export const SignUpPage: React.FC = () => {
       firebase
          .doCreateUserWithEmailAndPassword(email, passwordOne)
          .then((authUser) => {
+            const uid = authUser.user?.uid
+            if (!uid) return
+            
             firebase
-               .userRef(authUser.user?.uid)
+               .userRef(uid)
                .set({ username, email })
          })
          .then(() => {

@@ -16,24 +16,26 @@ const config = {
 
 
 export class FirebaseConstructor {
+   auth: app.auth.Auth
+   db: app.firestore.Firestore
+
    constructor() {
       app.initializeApp(config)
-
       this.auth = app.auth()
       this.db = app.firestore()
    }
 
    // *** Auth API ***
-   doCreateUserWithEmailAndPassword = (email, password) => this.auth.createUserWithEmailAndPassword(email, password)
-   
-   doSignInWithEmailAndPassword = (email, password) => this.auth.signInWithEmailAndPassword(email, password)
-   
-   doSignOut = () => this.auth.signOut()
-   
-   doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email)
+   doCreateUserWithEmailAndPassword = (email: string, password: string) => this.auth.createUserWithEmailAndPassword(email, password)
 
-   doPasswordUpdate = (password) => this.auth.currentUser.updatePassword(password)
+   doSignInWithEmailAndPassword = (email: string, password: string) => this.auth.signInWithEmailAndPassword(email, password)
+
+   doSignOut = () => this.auth.signOut()
+
+   doPasswordReset = (email: string) => this.auth.sendPasswordResetEmail(email)
+
+   doPasswordUpdate = (password: string) => this.auth.currentUser?.updatePassword(password)
 
    // *** Firestore API ***
-   userRef = (uid) => this.db.collection('users').doc(uid)
+   userRef = (uid: string) => this.db.collection('users').doc(uid)
 }

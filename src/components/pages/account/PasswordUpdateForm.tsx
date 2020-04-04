@@ -15,7 +15,7 @@ export const PasswordUpdateForm: React.FC = () => {
 
       firebase
          .doPasswordUpdate(passwordOne)
-         .then(() => {
+         ?.then(() => {
             setPasswordOne('')
             setPasswordTwo('')
             setError(null)
