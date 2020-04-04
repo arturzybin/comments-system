@@ -9,7 +9,10 @@ export interface IGlobalState {
       user: TAuthUser,
       username: string | null
    },
-   comments: IComment[]
+   commentsState: {
+      comments: IComment[],
+      isCommentsOver: boolean
+   }
 }
 
 

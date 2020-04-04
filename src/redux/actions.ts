@@ -1,4 +1,4 @@
-import { CHANGE_AUTH_USER, SET_AUTH_USER_USERNAME, ADD_COMMENTS } from "./types";
+import { CHANGE_AUTH_USER, SET_AUTH_USER_USERNAME, ADD_COMMENTS, SET_COMMENTS_OVER } from "./types";
 import { TAuthUser, IComment } from "../constants/typescript-types";
 
 // authUser -----------------------------------------------------------------------
@@ -17,3 +17,4 @@ export const addComments = (comments: IComment[]) => ({
    type: ADD_COMMENTS,
    payload: comments
 })
+export const setCommentsOver = () => ({ type: SET_COMMENTS_OVER })

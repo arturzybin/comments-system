@@ -1,5 +1,5 @@
-import { IComment } from "../constants/typescript-types";
-import { ADD_COMMENTS } from "./types";
+import { IComment, IGlobalState } from "../constants/typescript-types";
+import { ADD_COMMENTS, SET_COMMENTS_OVER } from "./types";
 
 
 interface IAction {
@@ -7,10 +7,20 @@ interface IAction {
    payload: IComment[]
 }
 
-export function commentsReducer(state: IComment[] = [], action: IAction) {
+type TState = IGlobalState['commentsState']
+
+const INITIAL_STATE: TState = {
+   comments: [],
+   isCommentsOver: false
+}
+
+export function commentsReducer(state: TState = INITIAL_STATE, action: IAction) {
    switch (action.type) {
       case ADD_COMMENTS:
-         return [...state, ...action.payload]
+         const comments = [...state.comments, ...action.payload]
+         return { ...state, comments }
+      case SET_COMMENTS_OVER:
+         return { ...state, isCommentsOver: true }
       default:
          return state
    }

@@ -3,19 +3,18 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { IComment, IGlobalState } from '../../../constants/typescript-types'
 import { FirebaseContext } from '../../../firebase/FirebaseContext'
-import { addComments } from '../../../redux/actions'
+import { addComments, setCommentsOver } from '../../../redux/actions'
 
 
 export function useCommentsLoading() {
    const dispatch = useDispatch()
-   const comments = useSelector((state: IGlobalState) => state.comments)
+   const {comments, isCommentsOver} = useSelector((state: IGlobalState) => state.commentsState)
    
    const firebase = useContext(FirebaseContext)
 
    const limit: number = 50
    const [query, setQuery] = useState(firebase.commentsRef().orderBy('created').limit(limit))
    const [loading, setLoading] = useState<boolean>(false)
-   const [commentsOver, setCommenstOver] = useState<boolean>(false)
    
    
    function loadComments() {
@@ -23,7 +22,7 @@ export function useCommentsLoading() {
       setLoading(true)
       
       query.get().then((documentSnapshots) => {
-         if (documentSnapshots.docs.length < limit) setCommenstOver(true)
+         if (documentSnapshots.docs.length < limit) dispatch(setCommentsOver())
          if (!documentSnapshots.docs.length) return
          
          const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1]
@@ -38,9 +37,9 @@ export function useCommentsLoading() {
    
 
    useEffect(() => {
-      loadComments()
+      if (!comments.length) loadComments()
       //eslint-disable-next-line
    }, [])
 
-   return {comments, loadComments, isCommentsOver: commentsOver}
+   return {comments, loadComments, isCommentsOver}
 }
