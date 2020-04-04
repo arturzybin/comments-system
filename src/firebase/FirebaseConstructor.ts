@@ -42,7 +42,9 @@ export class FirebaseConstructor {
    // *** Firestore API ***
    userRef = (uid: string) => this.db.collection('users').doc(uid)
 
-   doCreateComment = (comment: IComment) => this.db.collection(this.parentURL).add(comment)
+   commentsRef = () => this.db.collection('pages').doc(this.parentURL).collection('comments')
+
+   doCreateComment = (comment: IComment) => this.commentsRef().add(comment)
 }
 
 
