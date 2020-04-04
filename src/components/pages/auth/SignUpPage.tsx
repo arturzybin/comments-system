@@ -69,7 +69,7 @@ export const SignUpPage: React.FC = () => {
                   name="username"
                   className={usernameClassName}
                   value={username}
-                  onChange={(event) => setUsername(event.target.value)}
+                  onChange={(event) => setUsername(event.target.value.trim())}
                   type="text"
                   placeholder="Username"
                />
@@ -77,7 +77,7 @@ export const SignUpPage: React.FC = () => {
                   name="email"
                   className={emailClassName}
                   value={email}
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={(event) => setEmail(event.target.value.trim())}
                   type="text"
                   placeholder="Email Address"
                />
@@ -85,7 +85,7 @@ export const SignUpPage: React.FC = () => {
                   name="passwordOne"
                   className={passwordOneClassName}
                   value={passwordOne}
-                  onChange={(event) => setPasswordOne(event.target.value)}
+                  onChange={(event) => setPasswordOne(event.target.value.trim())}
                   type="password"
                   placeholder="Password"
                />
@@ -93,7 +93,7 @@ export const SignUpPage: React.FC = () => {
                   name="passwordTwo"
                   className={passwordTwoClassName}
                   value={passwordTwo}
-                  onChange={(event) => setPasswordTwo(event.target.value)}
+                  onChange={(event) => setPasswordTwo(event.target.value.trim())}
                   type="password"
                   placeholder="Confirm Password"
                />
