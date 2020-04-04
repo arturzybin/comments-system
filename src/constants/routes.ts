@@ -1,4 +1,5 @@
-const path = window.location.pathname
+let path = window.location.pathname
+path = '/'
 
 export const COMMENTS = path
 export const SIGN_IN = path + 'signin'

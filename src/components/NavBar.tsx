@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import * as ROUTES from '../constants/routes'
 import { TAuthUser, IGlobalState } from '../constants/typescript-types'
@@ -11,39 +11,28 @@ import commentsSrc from '../img/comments.svg'
 
 export const NavBar: React.FC = () => {
    const authUser: TAuthUser = useSelector((state: IGlobalState) => state.authUser.user)
+   const isCurrentPageComments = (useLocation().pathname === ROUTES.COMMENTS)
 
-   return (
-      <nav className="navbar">
-         {authUser ? <AuthNavBar /> : <NonAuthNavBar />}
-      </nav>
-   )
-}
+   const commentsClassname = (isCurrentPageComments) ? 'navbar__button navbar__button_pressed' : 'navbar__button'
+   const accountClassname = (isCurrentPageComments) ? 'navbar__button navbar__button_pressed' : 'navbar__button'
 
-
-const AuthNavBar: React.FC = () => {
    let username = useSelector((state: IGlobalState) => state.authUser.username)
    if (!username) username = 'Loading...'
 
+
    return (
-      <>
-         <Link to={ROUTES.COMMENTS} className="navbar__comments">
+      <nav className="navbar">
+         <Link to={ROUTES.COMMENTS} className={commentsClassname}>
             <img className="navbar__img" src={commentsSrc} alt="Comments" />
          </Link>
-         <Link to={ROUTES.ACCOUNT} className="navbar__account">
-            {/* <img className="navbar__img" src={avatarSrc} alt="Account" /> */}
-            {username}
-         </Link>
-      </>
+
+         {authUser ?
+            <Link to={ROUTES.ACCOUNT} className={accountClassname}>{username}</Link>
+            :
+            <Link to={ROUTES.SIGN_IN} className={accountClassname}>
+               <img className="navbar__img" src={avatarSrc} alt="Sign In" />
+            </Link>
+         }
+      </nav>
    )
 }
-
-const NonAuthNavBar: React.FC = () => (
-   <>
-      <Link to={ROUTES.COMMENTS} className="navbar__comments">
-         <img className="navbar__img" src={commentsSrc} alt="Comments" />
-      </Link>
-      <Link to={ROUTES.SIGN_IN} className="navbar__account">
-         <img className="navbar__img" src={avatarSrc} alt="Sign In" />
-      </Link>
-   </>
-)
