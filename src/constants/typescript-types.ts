@@ -4,12 +4,12 @@ import app from 'firebase/app'
 
 export type TAuthUser = null | firebase.User
 
-export interface IGlobalState {
+export interface IStore {
    authUser: {
       user: TAuthUser,
       username: string | null
    },
-   commentsState: {
+   commentsStore: {
       comments: IComment[],
       isCommentsOver: boolean
    }

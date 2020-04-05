@@ -1,14 +1,14 @@
 import { useState, useContext, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { IComment, IGlobalState } from '../../../constants/typescript-types'
+import { IComment, IStore } from '../../../constants/typescript-types'
 import { FirebaseContext } from '../../../firebase/FirebaseContext'
 import { addComments, setCommentsOver } from '../../../redux/actions'
 
 
 export function useCommentsLoading() {
    const dispatch = useDispatch()
-   const {comments, isCommentsOver} = useSelector((state: IGlobalState) => state.commentsState)
+   const {comments, isCommentsOver} = useSelector((state: IStore) => state.commentsStore)
    
    const firebase = useContext(FirebaseContext)
 

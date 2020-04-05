@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { TAuthUser, IGlobalState } from '../constants/typescript-types'
+import { TAuthUser, IStore } from '../constants/typescript-types'
 import * as ROUTES from '../constants/routes'
 
 
@@ -12,7 +12,7 @@ export const withAuthorisation = (condition: TCondition) => (Component: React.FC
 
    const WithAuthorisation: React.FC = (props) => {
       const history = useHistory()
-      const authUser = useSelector((state: IGlobalState) => state.authUser.user)
+      const authUser = useSelector((state: IStore) => state.authUser.user)
       const isConfirm = condition(authUser)
 
       if (!isConfirm) {

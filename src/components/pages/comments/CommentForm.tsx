@@ -2,12 +2,12 @@ import React, { useState, useContext } from 'react'
 import { FirebaseContext } from '../../../firebase/FirebaseContext'
 import { useSelector } from 'react-redux'
 import app from 'firebase/app'
-import { IGlobalState, IComment } from '../../../constants/typescript-types'
+import { IStore, IComment } from '../../../constants/typescript-types'
 
 
 export const CommentForm: React.FC = () => {
    const firebase = useContext(FirebaseContext)
-   const { user: authUser, username } = useSelector((state: IGlobalState) => state.authUser)
+   const { user: authUser, username } = useSelector((state: IStore) => state.authUser)
    const [text, setText] = useState<string>('')
 
 

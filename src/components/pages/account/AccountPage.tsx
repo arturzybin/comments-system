@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux'
 import { SignOutButton } from './SignOutButton'
 
 import { withAuthorisation } from '../../../firebase/withAuthorisation'
-import { TAuthUser, IGlobalState } from '../../../constants/typescript-types'
+import { TAuthUser, IStore } from '../../../constants/typescript-types'
 import { PasswordUpdateForm } from './PasswordUpdateForm'
 
 
 const AccountPageBase: React.FC = () => {
-   let { user: authUser, username } = useSelector((state: IGlobalState) => state.authUser)
+   let { user: authUser, username } = useSelector((state: IStore) => state.authUser)
    if (!username) username = 'Loading ...'
    const email = authUser?.email
 

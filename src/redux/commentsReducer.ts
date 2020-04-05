@@ -1,4 +1,4 @@
-import { IComment, IGlobalState } from "../constants/typescript-types";
+import { IComment, IStore } from "../constants/typescript-types";
 import { ADD_COMMENTS, SET_COMMENTS_OVER } from "./types";
 
 
@@ -7,7 +7,7 @@ interface IAction {
    payload: IComment[]
 }
 
-type TState = IGlobalState['commentsState']
+type TState = IStore['commentsStore']
 
 const INITIAL_STATE: TState = {
    comments: [],

@@ -1,5 +1,5 @@
 import { CHANGE_AUTH_USER, SET_AUTH_USER_USERNAME } from "./types";
-import { TAuthUser, IGlobalState } from "../constants/typescript-types";
+import { TAuthUser, IStore } from "../constants/typescript-types";
 
 
 interface IAction {
@@ -7,7 +7,7 @@ interface IAction {
    payload: TAuthUser | string
 }
 
-type TState = IGlobalState['authUser']
+type TState = IStore['authUser']
 
 
 const INITIAL_STATE = {
