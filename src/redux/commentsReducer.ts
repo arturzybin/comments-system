@@ -1,5 +1,5 @@
 import { IComment, IStore } from "../constants/typescript-types";
-import { ADD_COMMENTS, SET_COMMENTS_OVER, CREATE_COMMENT } from "./types";
+import { ADD_COMMENTS, SET_COMMENTS_OVER, CREATE_COMMENT, SET_COMMENT_LIKES, SET_IS_COMMENT_LIKED } from "./types";
 
 
 interface IAction {
@@ -27,6 +27,16 @@ export function commentsReducer(state: TState = INITIAL_STATE, action: IAction) 
 
       case CREATE_COMMENT:
          comments = [action.payload, ...state.comments]
+         return { ...state, comments }
+      
+      case SET_COMMENT_LIKES:
+         comments = state.comments
+         comments[action.payload.index].likesCount = action.payload.likesCount
+         return { ...state, comments }
+
+      case SET_IS_COMMENT_LIKED:
+         comments = state.comments
+         comments[action.payload.index].isLiked = action.payload.isLiked
          return { ...state, comments }
          
       default:

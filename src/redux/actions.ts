@@ -1,4 +1,4 @@
-import { CHANGE_AUTH_USER, SET_AUTH_USER_USERNAME, ADD_COMMENTS, SET_COMMENTS_OVER, CREATE_COMMENT } from "./types";
+import { CHANGE_AUTH_USER, SET_AUTH_USER_USERNAME, ADD_COMMENTS, SET_COMMENTS_OVER, CREATE_COMMENT, SET_COMMENT_LIKES, SET_IS_COMMENT_LIKED } from "./types";
 import { TAuthUser, IComment } from "../constants/typescript-types";
 
 // authUser -----------------------------------------------------------------------
@@ -23,4 +23,14 @@ export const setCommentsOver = () => ({ type: SET_COMMENTS_OVER })
 export const createComment = (comment: IComment) => ({
    type: CREATE_COMMENT,
    payload: comment
+})
+
+export const setCommentLikes = (commentIndex: number, likesCount: number) => ({
+   type: SET_COMMENT_LIKES,
+   payload: { index: commentIndex, likesCount }
+})
+
+export const setIsCommentLiked = (commentIndex: number, isLiked: boolean) => ({
+   type: SET_IS_COMMENT_LIKED,
+   payload: { index: commentIndex, isLiked }
 })

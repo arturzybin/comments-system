@@ -44,6 +44,8 @@ export class FirebaseConstructor {
 
    commentsRef = () => this.db.collection('pages').doc(this.parentURL).collection('comments')
 
+   commentLikesRef = (commentRef: app.firestore.DocumentReference) => commentRef.collection('likes')
+
    doCreateComment = (comment: IComment) => this.commentsRef().add(comment)
 }
 

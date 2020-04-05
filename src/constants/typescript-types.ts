@@ -21,6 +21,8 @@ export interface IComment {
    authorUID: string,
    text: string,
    created: app.firestore.Timestamp,
-   likesCount: number,
-   index?: number
+   // only inside redux store, not inside firebase
+   docRef?: app.firestore.DocumentReference,
+   likesCount?: number,
+   isLiked?: boolean
 }

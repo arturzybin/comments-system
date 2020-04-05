@@ -29,14 +29,12 @@ export const CommentForm: React.FC = () => {
          authorUsername: username,
          authorUID: authUser?.uid,
          text,
-         created: app.firestore.Timestamp.fromMillis(Date.now()),
-         likesCount: 0
+         created: app.firestore.Timestamp.fromMillis(Date.now())
       }
 
       firebase
          .doCreateComment(comment)
-         .then((docRef) => console.log("Document written with ID: ", docRef.id))
-         .then(() => dispatch( createComment(comment) ))
+         .then((docRef) => dispatch( createComment({ ...comment, docRef }) ))
          .then(() => setText(''))
          .catch((error) => console.error("Error adding document: ", error))
    }
