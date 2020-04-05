@@ -19,7 +19,7 @@ export const App: React.FC = () => {
    useAuthentication()
    
    return (
-      <Router>
+      <Router basename="/comments-system">
          <NavBar />
 
          <Route exact path='/'> <Redirect to={ROUTES.COMMENTS} /> </Route>
