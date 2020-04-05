@@ -3,13 +3,15 @@ import { useHistory, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import app from 'firebase/app'
 
-import { createComment } from '../../../redux/actions'
-import * as ROUTES from '../../../constants/routes'
-import { FirebaseContext } from '../../../firebase/FirebaseContext'
-import { IStore, IComment } from '../../../constants/typescript-types'
+import { createResponse } from '../../../../redux/actions'
+import * as ROUTES from '../../../../constants/routes'
+import { FirebaseContext } from '../../../../firebase/FirebaseContext'
+import { IStore, IResponse } from '../../../../constants/typescript-types'
 
 
-export const CommentForm: React.FC = () => {
+type TProps = { commentRef: app.firestore.DocumentReference, commentIndex: number }
+
+export const ResponseForm: React.FC<TProps> = ({ commentRef, commentIndex }) => {
    const history = useHistory()
    const dispatch = useDispatch()
    const firebase = useContext(FirebaseContext)
@@ -25,7 +27,7 @@ export const CommentForm: React.FC = () => {
          return
       }
 
-      const comment: IComment = {
+      const response: IResponse = {
          authorUsername: username,
          authorUID: authUser?.uid,
          text,
@@ -33,11 +35,12 @@ export const CommentForm: React.FC = () => {
       }
 
       firebase
-         .doCreateComment(comment)
-         .then((docRef) => dispatch( createComment({ ...comment, docRef, responses: [], isResponsesOver: false }) ))
+         .doCreateResponse(commentRef, response)
+         .then((docRef) => dispatch( createResponse(commentIndex, { ...response, docRef }) ))
          .then(() => setText(''))
-         .catch((error) => console.error("Error adding comment: ", error))
+         .catch((error) => console.error("Error adding response: ", error))
    }
+
 
    return (
       <form onSubmit={handleSubmit}>
@@ -45,9 +48,10 @@ export const CommentForm: React.FC = () => {
             value={text}
             onChange={(event) => setText(event.target.value)}
             maxLength={1000}
-            placeholder="Write a comment..."
+            placeholder="Write a response..."
          >
          </textarea>
+
          {
             authUser ?
             <button type="submit">Write as {username ? username : 'you'}</button>

@@ -1,7 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
-import { IComment } from '../constants/typescript-types';
+import { IComment, IResponse } from '../constants/typescript-types';
 
 
 const config = {
@@ -28,6 +28,7 @@ export class FirebaseConstructor {
       this.parentURL = getParentURL()
    }
 
+
    // *** Auth API ***
    doCreateUserWithEmailAndPassword = (email: string, password: string) => this.auth.createUserWithEmailAndPassword(email, password)
 
@@ -39,14 +40,23 @@ export class FirebaseConstructor {
 
    doPasswordUpdate = (password: string) => this.auth.currentUser?.updatePassword(password)
 
+
    // *** Firestore API ***
    userRef = (uid: string) => this.db.collection('users').doc(uid)
+
+   // comment
+   doCreateComment = (comment: IComment) => this.commentsRef().add(comment)
 
    commentsRef = () => this.db.collection('pages').doc(this.parentURL).collection('comments')
 
    commentLikesRef = (commentRef: app.firestore.DocumentReference) => commentRef.collection('likes')
+   
+   // response
+   doCreateResponse = (commentRef: app.firestore.DocumentReference, response: IResponse) => this.responsesRef(commentRef).add(response)
 
-   doCreateComment = (comment: IComment) => this.commentsRef().add(comment)
+   responsesRef = (commentRef: app.firestore.DocumentReference) => commentRef.collection('responses')
+
+   responseLikesRef = (responseRef: app.firestore.DocumentReference) => responseRef.collection('likes')
 }
 
 

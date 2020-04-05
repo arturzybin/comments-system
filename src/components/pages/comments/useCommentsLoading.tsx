@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { IComment, IStore } from '../../../constants/typescript-types'
+import { IComment, IStore, IResponse } from '../../../constants/typescript-types'
 import { FirebaseContext } from '../../../firebase/FirebaseContext'
 import { addComments, setCommentsOver } from '../../../redux/actions'
 
@@ -28,7 +28,12 @@ export function useCommentsLoading() {
          const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1]
          setQuery(firebase.commentsRef().orderBy('created', "desc").limit(limit).startAfter(lastVisible))
          
-         const loadedComments = documentSnapshots.docs.map((doc) => ({...doc.data(), docRef: doc.ref} as IComment))
+         const loadedComments = documentSnapshots.docs.map((doc) => ({
+            ...doc.data(),
+            docRef: doc.ref,
+            responses: [] as IResponse[],
+            isResponsesOver: false
+         } as IComment))
          dispatch(addComments(loadedComments))
          
          setLoading(false)

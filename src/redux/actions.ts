@@ -1,5 +1,5 @@
-import { CHANGE_AUTH_USER, SET_AUTH_USER_USERNAME, ADD_COMMENTS, SET_COMMENTS_OVER, CREATE_COMMENT, SET_COMMENT_LIKES, SET_IS_COMMENT_LIKED } from "./types";
-import { TAuthUser, IComment } from "../constants/typescript-types";
+import { CHANGE_AUTH_USER, SET_AUTH_USER_USERNAME, ADD_COMMENTS, SET_COMMENTS_OVER, CREATE_COMMENT, SET_COMMENT_LIKES, SET_IS_COMMENT_LIKED, ADD_RESPONSES, SET_RESPONSES_OVER, CREATE_RESPONSE, SET_RESPONSE_LIKES, SET_IS_RESPONSE_LIKED } from "./types";
+import { TAuthUser, IComment, IResponse } from "../constants/typescript-types";
 
 // authUser -----------------------------------------------------------------------
 export const changeAuthUser = (user: TAuthUser) => ({
@@ -33,4 +33,30 @@ export const setCommentLikes = (commentIndex: number, likesCount: number) => ({
 export const setIsCommentLiked = (commentIndex: number, isLiked: boolean) => ({
    type: SET_IS_COMMENT_LIKED,
    payload: { index: commentIndex, isLiked }
+})
+
+// responses -----------------------------------------------------------------------
+export const addResponses = (commentIndex: number, responses: IResponse[]) => ({
+   type: ADD_RESPONSES,
+   payload: { commentIndex, responses }
+})
+
+export const setResponsesOver = (commentIndex: number) => ({
+   type: SET_RESPONSES_OVER,
+   payload: { commentIndex }
+})
+
+export const createResponse = (commentIndex: number, response: IResponse) => ({
+   type: CREATE_RESPONSE,
+   payload: { commentIndex, response }
+})
+
+export const setResponseLikes = (commentIndex: number, responseIndex: number, likesCount: number) => ({
+   type: SET_RESPONSE_LIKES,
+   payload: { commentIndex, responseIndex, likesCount }
+})
+
+export const setIsResponseLiked = (commentIndex: number, responseIndex: number, isLiked: boolean) => ({
+   type: SET_IS_RESPONSE_LIKED,
+   payload: { commentIndex, responseIndex, isLiked }
 })

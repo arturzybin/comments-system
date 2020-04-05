@@ -24,5 +24,18 @@ export interface IComment {
    // only inside redux store, not inside firebase
    docRef?: app.firestore.DocumentReference,
    likesCount?: number,
-   isLiked?: boolean
+   isLiked?: boolean,
+   responses?: IResponse[],
+   isResponsesOver?: boolean
+}
+
+export interface IResponse {
+   authorUsername: string,
+   authorUID: string,
+   text: string,
+   created: app.firestore.Timestamp,
+   // only inside redux store, not inside firebase
+   docRef?: app.firestore.DocumentReference,
+   likesCount?: number,
+   isLiked?: boolean,
 }
