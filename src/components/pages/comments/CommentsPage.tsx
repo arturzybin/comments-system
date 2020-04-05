@@ -14,11 +14,20 @@ export const CommentsPage: React.FC = () => {
       />
    ))
 
+
+   const showLoader: boolean = !isCommentsOver && !comments.length
+   const showLoadButton: boolean = !isCommentsOver
+
+
    return (
-      <div className="comments">
-         <CommentForm />
-         {commentsTemplate}
-         <button onClick={loadComments} disabled={isCommentsOver}>Load more comments</button>
-      </div>
+      showLoader ?
+         <p>Loading...</p>
+         :
+         <div className="comments">
+            < CommentForm />
+            {commentsTemplate}
+            
+            {showLoader && <button onClick={loadComments}>Load more comments</button>}
+         </div >
    )
 }
