@@ -77,12 +77,13 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
 
    
    const heartSrc = comment.isLiked ? filledHeart : heart
+   const preparedText = comment.text.split('__n').map((par, index) => <p key={index}>{par}</p>)
 
    return (
       <div className="comment">
          <div className="comment__author">{comment.authorUsername}</div>
          <div className="comment__created">{moment.unix(comment.created.seconds).fromNow()}</div>
-         <p>{comment.text}</p>
+         <div>{preparedText}</div>
          
          <button className="comment__like" onClick={handleLike}>
             <img src={heartSrc} alt="like" width="20px"/>{comment.likesCount}

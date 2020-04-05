@@ -20,15 +20,19 @@ export const CommentForm: React.FC = () => {
 
    function handleSubmit(event: React.FormEvent) {
       event.preventDefault()
+
+      if (!text) return
       if (!username || !authUser) {
          if (!authUser) history.push(ROUTES.SIGN_IN)
          return
       }
 
+      const preparedText = text.replace('\n', '__n')
+
       const comment: IComment = {
          authorUsername: username,
          authorUID: authUser?.uid,
-         text,
+         text: preparedText,
          created: app.firestore.Timestamp.fromMillis(Date.now())
       }
 
@@ -39,9 +43,13 @@ export const CommentForm: React.FC = () => {
          .catch((error) => console.error("Error adding comment: ", error))
    }
 
+
+   const formClassname = text ? 'message-form' : 'message-form message-form_closed'
+
    return (
-      <form onSubmit={handleSubmit}>
+      <form className={formClassname} onSubmit={handleSubmit}>
          <textarea
+            className="message-form__text"
             value={text}
             onChange={(event) => setText(event.target.value)}
             maxLength={1000}
@@ -50,9 +58,9 @@ export const CommentForm: React.FC = () => {
          </textarea>
          {
             authUser ?
-            <button type="submit">Write as {username ? username : 'you'}</button>
+            <button className="message-form__submit" type="submit" disabled={!text}>Write as {username ? username : 'you'}</button>
             :
-            <span><Link to={ROUTES.SIGN_IN}>Sign in</Link> to publish</span>
+            <span className="message-form__sign-in"><Link to={ROUTES.SIGN_IN}>Sign in</Link> to publish</span>
          }
       </form>
    )
