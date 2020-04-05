@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import app from 'firebase/app'
 
@@ -48,7 +48,12 @@ export const CommentForm: React.FC = () => {
             placeholder="Write a comment..."
          >
          </textarea>
-         <button type="submit">Write as You</button>
+         {
+            authUser ?
+            <button type="submit">Write as {username ? username : 'you'}</button>
+            :
+            <span><Link to={ROUTES.SIGN_IN}>Sign in</Link> to publish</span>
+         }
       </form>
    )
 }

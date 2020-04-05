@@ -23,7 +23,6 @@ export const App: React.FC = () => {
          <NavBar />
 
          <Route exact path='/'> <Redirect to={ROUTES.COMMENTS} /> </Route>
-         <Route path={ROUTES.GITHUB_PAGES}> <Redirect to={ROUTES.COMMENTS} /> </Route>
 
          <Route path={ROUTES.COMMENTS} component={CommentsPage} />
          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
