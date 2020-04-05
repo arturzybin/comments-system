@@ -31,18 +31,18 @@ export const SignInPage: React.FC = () => {
    }
 
 
-   let emailClassName = 'form__input'
-   let passwordClassName = 'form__input'
-   emailClassName += (email && !validator.validate(email)) ? ' form__input_invalid' : ''
-   passwordClassName += (password && password.length < 6) ? ' form__input_invalid' : ''
+   let emailClassName = 'auth-form__input'
+   let passwordClassName = 'auth-form__input'
+   emailClassName += (email && !validator.validate(email)) ? ' auth-form__input_invalid' : ''
+   passwordClassName += (password && password.length < 6) ? ' auth-form__input_invalid' : ''
 
    const isFormInvalid = password.length < 6 || !validator.validate(email)
 
 
    return (
-      <div className="form-background">
-         <div className="form">
-            <h2 className="form__title">Sign In</h2>
+      <div className="auth-form-background">
+         <div className="auth-form">
+            <h2 className="auth-form__title">Sign In</h2>
 
             <form onSubmit={handleSubmit}>
                <input
@@ -61,17 +61,17 @@ export const SignInPage: React.FC = () => {
                   type="password"
                   placeholder="Password"
                />
-               <button disabled={isFormInvalid} type="submit" className="form__input form__button">
+               <button disabled={isFormInvalid} type="submit" className="auth-form__input auth-form__button">
                   Sign In
                </button>
 
-               {error && <p className="form__error">{error.message}</p>}
+               {error && <p className="auth-form__error">{error.message}</p>}
             </form>
 
-            <p className="form__link">
+            <p className="auth-form__link">
                Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign up</Link>
             </p>
-            <p className="form__link">
+            <p className="auth-form__link">
                Forgot password? <Link to={ROUTES.PASSWORD_RESET}>Reset</Link>
             </p>
          </div>

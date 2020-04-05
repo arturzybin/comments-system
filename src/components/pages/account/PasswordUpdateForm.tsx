@@ -23,10 +23,10 @@ export const PasswordUpdateForm: React.FC = () => {
          .catch(setError)
    }
 
-   let passwordOneClassName = 'form__input'
-   let passwordTwoClassName = 'form__input'
-   passwordOneClassName += (passwordOne && passwordOne.length < 6) ? ' form__input_invalid' : ''
-   passwordTwoClassName += (passwordTwo && passwordTwo !== passwordOne) ? ' form__input_invalid' : ''
+   let passwordOneClassName = 'auth-form__input'
+   let passwordTwoClassName = 'auth-form__input'
+   passwordOneClassName += (passwordOne && passwordOne.length < 6) ? ' auth-form__input_invalid' : ''
+   passwordTwoClassName += (passwordTwo && passwordTwo !== passwordOne) ? ' auth-form__input_invalid' : ''
 
    const isFormInvalid =
       passwordOne !== passwordTwo ||
@@ -51,11 +51,11 @@ export const PasswordUpdateForm: React.FC = () => {
             type="password"
             placeholder="Confirm Password"
          />
-         <button disabled={isFormInvalid} type="submit" className="form__input form__button">
+         <button disabled={isFormInvalid} type="submit" className="auth-form__input auth-form__button">
             Update password
-               </button>
+         </button>
 
-         {error && <p className="form__error">{error.message}</p>}
+         {error && <p className="auth-form__error">{error.message}</p>}
       </form>
    )
 }

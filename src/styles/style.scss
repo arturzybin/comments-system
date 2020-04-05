@@ -5,6 +5,7 @@
    font-family: 'Nunito', sans-serif;
 }
 
-@import './modules/form';
 @import './modules/navbar';
+@import './modules/auth-form';
+@import './modules/comments';
 @import './modules/responses';

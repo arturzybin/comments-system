@@ -14,10 +14,10 @@ const AccountPageBase: React.FC = () => {
    const email = authUser?.email
 
    return (
-      <div className="form-background">
-         <div className="form">
-            <h2 className="form__title form__username">{username}</h2>
-            <h2 className="form__title form__email">{email}</h2>
+      <div className="auth-form-background">
+         <div className="auth-form">
+            <h2 className="auth-form__title auth-form__username">{username}</h2>
+            <h2 className="auth-form__title auth-form__email">{email}</h2>
             
             <PasswordUpdateForm />
             <hr/>
