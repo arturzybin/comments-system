@@ -1,11 +1,13 @@
 import React, { useContext, useEffect } from 'react'
 import app from 'firebase/app'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import moment from 'moment'
 
 import { FirebaseContext } from '../../../firebase/FirebaseContext'
 import { setCommentLikes, setIsCommentLiked } from '../../../redux/actions'
 import { IComment, IStore } from '../../../constants/typescript-types'
+import * as ROUTES from '../../../constants/routes'
 
 import heart from '../../../img/heart.svg'
 import filledHeart from '../../../img/filled-heart.svg'
@@ -14,6 +16,7 @@ import filledHeart from '../../../img/filled-heart.svg'
 type TProps = { comment: IComment, commentIndex: number }
 
 export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
+   const history = useHistory()
    const dispatch = useDispatch()
    const firebase = useContext(FirebaseContext)
    const authUser = useSelector((store: IStore) => store.authUserStore.authUser)
@@ -39,7 +42,10 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
 
 
    function handleLike() {
-      if (!authUser) return
+      if (!authUser) {
+         history.push(ROUTES.SIGN_IN)
+         return
+      }
       if (comment.likesCount === undefined || comment.isLiked === undefined) return
 
       const authUserLikeRef = firebase.commentLikesRef(comment.docRef as app.firestore.DocumentReference).doc(authUser?.uid)
