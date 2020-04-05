@@ -22,7 +22,7 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
    useEffect(() => {
       loadCommentLikes()
       //eslint-disable-next-line
-   }, [])
+   }, [authUser])
 
 
    function loadCommentLikes() {
@@ -39,6 +39,7 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
 
 
    function handleLike() {
+      if (!authUser) return
       if (comment.likesCount === undefined || comment.isLiked === undefined) return
 
       const authUserLikeRef = firebase.commentLikesRef(comment.docRef as app.firestore.DocumentReference).doc(authUser?.uid)
