@@ -8,7 +8,7 @@ import { addComments, setCommentsOver } from '../../../redux/actions'
 
 export function useCommentsLoading() {
    const dispatch = useDispatch()
-   const {comments, isCommentsOver} = useSelector((state: IStore) => state.commentsStore)
+   const {comments, isCommentsOver} = useSelector((store: IStore) => store.commentsStore)
    
    const firebase = useContext(FirebaseContext)
 

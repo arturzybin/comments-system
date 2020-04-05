@@ -7,18 +7,18 @@ interface IAction {
    payload: TAuthUser | string
 }
 
-type TState = IStore['authUser']
+type TState = IStore['authUserStore']
 
 
 const INITIAL_STATE = {
-   user: null,
+   authUser: null,
    username: null
 }
 
 export function authUserReducer (state: TState = INITIAL_STATE, action: IAction) {
    switch(action.type) {
       case CHANGE_AUTH_USER:
-         return { user: action.payload, username: null } as TState
+         return { authUser: action.payload, username: null } as TState
       case SET_AUTH_USER_USERNAME:
          return { ...state, username: action.payload } as TState
       default:

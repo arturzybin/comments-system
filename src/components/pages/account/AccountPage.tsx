@@ -9,7 +9,7 @@ import { PasswordUpdateForm } from './PasswordUpdateForm'
 
 
 const AccountPageBase: React.FC = () => {
-   let { user: authUser, username } = useSelector((state: IStore) => state.authUser)
+   let { authUser, username } = useSelector((store: IStore) => store.authUserStore)
    if (!username) username = 'Loading ...'
    const email = authUser?.email
 

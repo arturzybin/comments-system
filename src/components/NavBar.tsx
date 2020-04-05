@@ -3,21 +3,20 @@ import { useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 
 import * as ROUTES from '../constants/routes'
-import { TAuthUser, IStore } from '../constants/typescript-types'
+import { IStore } from '../constants/typescript-types'
 
 import avatarSrc from '../img/avatar.svg'
 import commentsSrc from '../img/comments.svg'
 
 
 export const NavBar: React.FC = () => {
-   const authUser: TAuthUser = useSelector((state: IStore) => state.authUser.user)
-   const isCurrentPageComments = useLocation().pathname === ROUTES.COMMENTS
+   let { authUser, username } = useSelector((store: IStore) => store.authUserStore)
+   if (!username) username = 'Loading...'
 
+   const isCurrentPageComments = useLocation().pathname === ROUTES.COMMENTS
    const commentsClassname = (isCurrentPageComments) ? 'navbar__button navbar__button_pressed' : 'navbar__button'
    const accountClassname = (isCurrentPageComments) ? 'navbar__button' : 'navbar__button navbar__button_pressed'
 
-   let username = useSelector((state: IStore) => state.authUser.username)
-   if (!username) username = 'Loading...'
 
    return (
       <nav className="navbar">

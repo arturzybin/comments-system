@@ -5,8 +5,8 @@ import app from 'firebase/app'
 export type TAuthUser = null | firebase.User
 
 export interface IStore {
-   authUser: {
-      user: TAuthUser,
+   authUserStore: {
+      authUser: TAuthUser,
       username: string | null
    },
    commentsStore: {

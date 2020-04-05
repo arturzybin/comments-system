@@ -7,7 +7,7 @@ import { IStore, IComment } from '../../../constants/typescript-types'
 
 export const CommentForm: React.FC = () => {
    const firebase = useContext(FirebaseContext)
-   const { user: authUser, username } = useSelector((state: IStore) => state.authUser)
+   const { authUser, username } = useSelector((store: IStore) => store.authUserStore)
    const [text, setText] = useState<string>('')
 
 
