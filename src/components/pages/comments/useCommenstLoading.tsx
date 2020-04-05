@@ -13,7 +13,7 @@ export function useCommentsLoading() {
    const firebase = useContext(FirebaseContext)
 
    const limit: number = 50
-   const [query, setQuery] = useState(firebase.commentsRef().orderBy('created').limit(limit))
+   const [query, setQuery] = useState(firebase.commentsRef().orderBy('created', "desc").limit(limit))
    const [loading, setLoading] = useState<boolean>(false)
    
    
@@ -26,7 +26,7 @@ export function useCommentsLoading() {
          if (!documentSnapshots.docs.length) return
          
          const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1]
-         setQuery(firebase.commentsRef().orderBy('created').limit(limit).startAfter(lastVisible))
+         setQuery(firebase.commentsRef().orderBy('created', "desc").limit(limit).startAfter(lastVisible))
          
          const loadedComments = documentSnapshots.docs.map((doc) => doc.data() as IComment)
          dispatch(addComments(loadedComments))
