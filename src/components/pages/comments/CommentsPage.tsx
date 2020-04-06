@@ -1,7 +1,10 @@
 import React from 'react'
+
 import { CommentForm } from './CommentForm'
+import { Loading } from './Loading'
 import { Comment } from './Comment'
 import { useCommentsLoading } from './useCommentsLoading'
+
 
 export const CommentsPage: React.FC = () => {
    const { comments, loadComments, isCommentsOver, isLoading } = useCommentsLoading()
@@ -19,14 +22,15 @@ export const CommentsPage: React.FC = () => {
    const showLoadButton: boolean = !isCommentsOver && !isLoading
 
    return (
-      showLoader
-         ?
-         <p>Loading...</p>
-         :
-         <div className="comments">
-            <CommentForm />
-            {commentsTemplate}
-            {showLoadButton && <button onClick={loadComments}>Load more comments</button>}
-         </div >
+      // showLoader
+      //    ?
+      //    <Loading />
+      //    :
+      //    <div className="comments">
+      //       <CommentForm />
+      //       {commentsTemplate}
+      //       {showLoadButton && <button onClick={loadComments}>Load more comments</button>}
+      //    </div >
+      <Loading />
    )
 }
