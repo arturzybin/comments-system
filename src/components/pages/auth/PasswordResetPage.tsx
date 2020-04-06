@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom';
-import validator from 'email-validator';
 
 import { FirebaseContext } from '../../../firebase/FirebaseContext'
 import * as ROUTES from '../../../constants/routes'
+import { checkFormInvalid, getInputClassname } from '../validate';
 
 
 export const PasswordResetPage: React.FC = () => {
@@ -30,10 +30,9 @@ export const PasswordResetPage: React.FC = () => {
    }
 
 
-   let emailClassName = 'auth-form__input'
-   emailClassName += (email && !validator.validate(email)) ? ' auth-form__input_invalid' : ''
+   let emailClassName = getInputClassname('email', email)
 
-   const isFormInvalid = !validator.validate(email)
+   const isFormInvalid = checkFormInvalid({ email })
 
 
    return (
@@ -46,7 +45,7 @@ export const PasswordResetPage: React.FC = () => {
                   name="email"
                   className={emailClassName}
                   value={email}
-                  onChange={(event) => setEmail(event.target.value.trim())}
+                  onChange={(event) => setEmail(event.target.value.replace(/ /g, ''))}
                   type="text"
                   placeholder="Email Address"
                />

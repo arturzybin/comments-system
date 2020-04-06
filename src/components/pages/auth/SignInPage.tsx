@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { useHistory, Link } from 'react-router-dom';
-import validator from 'email-validator';
 
 import { FirebaseContext } from '../../../firebase/FirebaseContext'
 import * as ROUTES from '../../../constants/routes'
+import { checkFormInvalid, getInputClassname } from '../validate';
 
 
 export const SignInPage: React.FC = () => {
@@ -32,12 +32,12 @@ export const SignInPage: React.FC = () => {
    }
 
 
-   let emailClassName = 'auth-form__input'
-   let passwordClassName = 'auth-form__input'
-   emailClassName += (email && !validator.validate(email)) ? ' auth-form__input_invalid' : ''
-   passwordClassName += (password && password.length < 6) ? ' auth-form__input_invalid' : ''
+   const emailClassName = getInputClassname('email', email)
+   const passwordClassName = getInputClassname('password', password)
+   // emailClassName += (email && !validator.validate(email)) ? ' auth-form__input_invalid' : ''
+   // passwordClassName += (password && (password.length < 6 || password.length > 25)) ? ' auth-form__input_invalid' : ''
 
-   const isFormInvalid = password.length < 6 || !validator.validate(email)
+   const isFormInvalid = checkFormInvalid({ email, password })
 
 
    return (
@@ -50,7 +50,7 @@ export const SignInPage: React.FC = () => {
                   name="email"
                   className={emailClassName}
                   value={email}
-                  onChange={(event) => setEmail(event.target.value.trim())}
+                  onChange={(event) => setEmail(event.target.value.replace(/ /g, ''))}
                   type="text"
                   placeholder="Email Address"
                />
@@ -58,7 +58,7 @@ export const SignInPage: React.FC = () => {
                   name="password"
                   className={passwordClassName}
                   value={password}
-                  onChange={(event) => setPassword(event.target.value.trim())}
+                  onChange={(event) => setPassword(event.target.value.replace(/ /g, ''))}
                   type="password"
                   placeholder="Password"
                />

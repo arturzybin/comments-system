@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { FirebaseContext } from '../../../firebase/FirebaseContext'
+import { getInputClassname, checkFormInvalid } from '../validate'
 
 
 export const PasswordUpdateForm: React.FC = () => {
@@ -24,14 +25,10 @@ export const PasswordUpdateForm: React.FC = () => {
          .catch(setError)
    }
 
-   let passwordOneClassName = 'auth-form__input'
-   let passwordTwoClassName = 'auth-form__input'
-   passwordOneClassName += (passwordOne && passwordOne.length < 6) ? ' auth-form__input_invalid' : ''
-   passwordTwoClassName += (passwordTwo && passwordTwo !== passwordOne) ? ' auth-form__input_invalid' : ''
+   let passwordOneClassName = getInputClassname('passwordOne', passwordOne)
+   let passwordTwoClassName = getInputClassname('passwordTwo', passwordTwo, passwordOne)
 
-   const isFormInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne.length < 6
+   const isFormInvalid = checkFormInvalid({ passwordOne, passwordTwo })
 
 
    return (
@@ -40,7 +37,7 @@ export const PasswordUpdateForm: React.FC = () => {
             name="passwordOne"
             className={passwordOneClassName}
             value={passwordOne}
-            onChange={(event) => setPasswordOne(event.target.value.trim())}
+            onChange={(event) => setPasswordOne(event.target.value.replace(/ /g, ''))}
             type="password"
             placeholder="New Password"
          />
@@ -48,7 +45,7 @@ export const PasswordUpdateForm: React.FC = () => {
             name="passwordTwo"
             className={passwordTwoClassName}
             value={passwordTwo}
-            onChange={(event) => setPasswordTwo(event.target.value.trim())}
+            onChange={(event) => setPasswordTwo(event.target.value.replace(/ /g, ''))}
             type="password"
             placeholder="Confirm Password"
          />

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { useHistory, Link } from 'react-router-dom';
-import validator from 'email-validator';
 
 import { FirebaseContext } from '../../../firebase/FirebaseContext'
 import * as ROUTES from '../../../constants/routes'
+import { checkFormInvalid, getInputClassname } from '../validate';
 
 
 export const SignUpPage: React.FC = () => {
@@ -44,20 +44,12 @@ export const SignUpPage: React.FC = () => {
    }
 
 
-   let usernameClassName = 'auth-form__input'
-   let emailClassName = 'auth-form__input'
-   let passwordOneClassName = 'auth-form__input'
-   let passwordTwoClassName = 'auth-form__input'
-   usernameClassName += (username && (username.length < 3 || username.length > 15)) ? ' auth-form__input_invalid' : ''
-   emailClassName += (email && !validator.validate(email)) ? ' auth-form__input_invalid' : ''
-   passwordOneClassName += (passwordOne && (passwordOne.length < 6 || passwordOne.length > 25)) ? ' auth-form__input_invalid' : ''
-   passwordTwoClassName += (passwordTwo && passwordTwo !== passwordOne) ? ' auth-form__input_invalid' : ''
+   let usernameClassName = getInputClassname('username', username)
+   let emailClassName = getInputClassname('email', email)
+   let passwordOneClassName = getInputClassname('passwordOne', passwordOne)
+   let passwordTwoClassName = getInputClassname('passwordTwo', passwordTwo, passwordOne)
 
-   const isFormInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne.length < 6 ||
-      !validator.validate(email) ||
-      username === ''
+   const isFormInvalid = checkFormInvalid({ username, email, passwordOne, passwordTwo })
 
 
    return (
@@ -70,7 +62,7 @@ export const SignUpPage: React.FC = () => {
                   name="username"
                   className={usernameClassName}
                   value={username}
-                  onChange={(event) => setUsername(event.target.value.trim())}
+                  onChange={(event) => setUsername(event.target.value.replace(/ /g, ''))}
                   type="text"
                   placeholder="Username"
                />
@@ -78,7 +70,7 @@ export const SignUpPage: React.FC = () => {
                   name="email"
                   className={emailClassName}
                   value={email}
-                  onChange={(event) => setEmail(event.target.value.trim())}
+                  onChange={(event) => setEmail(event.target.value.replace(/ /g, ''))}
                   type="text"
                   placeholder="Email Address"
                />
@@ -86,7 +78,7 @@ export const SignUpPage: React.FC = () => {
                   name="passwordOne"
                   className={passwordOneClassName}
                   value={passwordOne}
-                  onChange={(event) => setPasswordOne(event.target.value.trim())}
+                  onChange={(event) => setPasswordOne(event.target.value.replace(/ /g, ''))}
                   type="password"
                   placeholder="Password"
                />
@@ -94,7 +86,7 @@ export const SignUpPage: React.FC = () => {
                   name="passwordTwo"
                   className={passwordTwoClassName}
                   value={passwordTwo}
-                  onChange={(event) => setPasswordTwo(event.target.value.trim())}
+                  onChange={(event) => setPasswordTwo(event.target.value.replace(/ /g, ''))}
                   type="password"
                   placeholder="Confirm Password"
                />
