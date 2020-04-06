@@ -5,7 +5,7 @@
    position: relative;
    z-index: 10;
 
-   padding-right: rem(20);
+   padding-right: rem(10);
 
    text-align: right;
 
@@ -23,6 +23,7 @@
       margin: rem(10);
       padding: 0 rem(10);
 
+      transition: box-shadow 300ms ease-in-out;
       vertical-align: middle;
 
       color: #000;
@@ -30,7 +31,6 @@
       background: linear-gradient(145deg, #76a998, #8cc9b5);
       box-shadow: rem(7) rem(7) rem(14) #699687,
       rem(-7) rem(-7) rem(14) #9de2cb;
-      transition: box-shadow 300ms ease-in-out;
 
       &_pressed {
          cursor: default;
@@ -45,5 +45,22 @@
       height: rem(35);
 
       vertical-align: middle;
+   }
+}
+
+
+@media screen and (max-width: 768px) {
+   .navbar {
+      &__button {
+         font-size: rem(18);
+         line-height: rem(40);
+
+         height: rem(40);
+         margin: rem(5);
+      }
+
+      &__img {
+         height: rem(25);
+      }
    }
 }

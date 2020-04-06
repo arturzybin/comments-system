@@ -10,12 +10,12 @@
    width: 100%;
    padding-top: rem(80);
 
-   text-align: center;
    animation: swing-in-top-fwd .5s cubic-bezier(.175, .885, .320, 1.275) both;
+   text-align: center;
 
    background: $sea-green;
 
-   &::before {
+   &::after {
       display: inline-block;
 
       height: calc(100vh - 5rem);
@@ -160,5 +160,65 @@
       text-align: center;
 
       color: #d8000c;
+   }
+}
+
+
+@media screen and (max-width: 768px) {
+   .auth-form-background {
+      padding-top: rem(60);
+
+      &::after {
+         height: calc(100vh - 3.75rem);
+      }
+   }
+
+   .auth-form {
+      width: rem(300);
+
+      &::after {
+         height: calc(100vh - 3.75rem);
+      }
+
+      &__title {
+         font-size: rem(30);
+
+         margin-top: rem(30);
+      }
+
+      &__username {
+         margin-top: rem(30);
+         margin-bottom: rem(15);
+      }
+
+      &__email {
+         font-size: rem(20);
+
+         margin-top: 0;
+         margin-bottom: rem(25);
+      }
+
+      &__input {
+         font-size: rem(15);
+
+         width: 90%;
+         height: rem(30);
+         margin: rem(15) auto;
+      }
+
+      &__button a {
+         line-height: rem(30);
+
+         height: rem(30);
+      }
+
+      &__link {
+         &:first-of-type {
+            margin-top: rem(30);
+         }
+         &:last-of-type {
+            margin-bottom: rem(20);
+         }
+      }
    }
 }
