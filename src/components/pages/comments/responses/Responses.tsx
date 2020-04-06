@@ -11,7 +11,7 @@ import { IComment } from '../../../../constants/typescript-types'
 type TProps = { comment: IComment, commentIndex: number, showForm: boolean }
 
 export const Responses: React.FC<TProps> = ({ comment, commentIndex, showForm }) => {
-   const { responses, loadResponses, isResponsesOver } = useResponsesLoading(comment, commentIndex)
+   const { responses, loadResponses, isResponsesOver, isLoading } = useResponsesLoading(comment, commentIndex)
 
    const responsesTemplate = responses?.map((response, index) => (
       <Response
@@ -23,7 +23,7 @@ export const Responses: React.FC<TProps> = ({ comment, commentIndex, showForm })
    ))
 
 
-   const showLoadButton: boolean = !isResponsesOver
+   const showLoadButton: boolean = !isResponsesOver && !isLoading
 
    return (
       <div className="responses">

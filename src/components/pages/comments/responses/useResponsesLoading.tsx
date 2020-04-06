@@ -31,7 +31,7 @@ export function useResponsesLoading(comment: IComment, commentIndex: number) {
          if (!documentSnapshots.docs.length) return
          
          const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1]
-         setQuery(responsesRef.orderBy('created', "desc").limit(limit).startAfter(lastVisible))
+         setQuery(responsesRef.orderBy('created').limit(limit).startAfter(lastVisible))
          
          const loadedResponses = documentSnapshots.docs.map((doc) => ({...doc.data(), docRef: doc.ref} as IResponse))
          dispatch(addResponses(commentIndex, loadedResponses))
@@ -46,5 +46,5 @@ export function useResponsesLoading(comment: IComment, commentIndex: number) {
       //eslint-disable-next-line
    }, [])
 
-   return {responses, loadResponses, isResponsesOver}
+   return {responses, loadResponses, isResponsesOver, isLoading: loading}
 }

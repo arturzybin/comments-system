@@ -4,7 +4,7 @@ import { Comment } from './Comment'
 import { useCommentsLoading } from './useCommentsLoading'
 
 export const CommentsPage: React.FC = () => {
-   const { comments, loadComments, isCommentsOver } = useCommentsLoading()
+   const { comments, loadComments, isCommentsOver, isLoading } = useCommentsLoading()
 
    const commentsTemplate = comments.map((comment, index) => (
       <Comment
@@ -16,7 +16,7 @@ export const CommentsPage: React.FC = () => {
 
 
    const showLoader: boolean = !isCommentsOver && !comments.length
-   const showLoadButton: boolean = !isCommentsOver
+   const showLoadButton: boolean = !isCommentsOver && !isLoading
 
    return (
       showLoader

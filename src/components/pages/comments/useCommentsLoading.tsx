@@ -46,5 +46,5 @@ export function useCommentsLoading() {
       //eslint-disable-next-line
    }, [])
 
-   return {comments, loadComments, isCommentsOver}
+   return {comments, loadComments, isCommentsOver, isLoading: loading}
 }
