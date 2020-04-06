@@ -19,7 +19,7 @@ export function responsesReducer(state: IComment, action: IAction): IComment {
          return { ...state, isResponsesOver: true }
 
       case CREATE_RESPONSE:
-         responses = [action.payload.response, ...state.responses as IResponse[]]
+         responses = [...state.responses as IResponse[], action.payload.response]
          return { ...state, responses }
 
       case SET_RESPONSE_LIKES:
