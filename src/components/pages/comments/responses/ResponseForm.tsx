@@ -9,9 +9,9 @@ import { FirebaseContext } from '../../../../firebase/FirebaseContext'
 import { IStore, IResponse } from '../../../../constants/typescript-types'
 
 
-type TProps = { commentRef: app.firestore.DocumentReference, commentIndex: number }
+type TProps = { commentRef: app.firestore.DocumentReference, commentIndex: number, closeForm: () => void }
 
-export const ResponseForm: React.FC<TProps> = ({ commentRef, commentIndex }) => {
+export const ResponseForm: React.FC<TProps> = ({ commentRef, commentIndex, closeForm }) => {
    const history = useHistory()
    const dispatch = useDispatch()
    const firebase = useContext(FirebaseContext)
@@ -40,7 +40,7 @@ export const ResponseForm: React.FC<TProps> = ({ commentRef, commentIndex }) => 
       firebase
          .doCreateResponse(commentRef, response)
          .then((docRef) => dispatch( createResponse(commentIndex, { ...response, docRef }) ))
-         .then(() => setText(''))
+         .then(() => closeForm())
          .catch((error) => console.error("Error adding response: ", error))
    }
 

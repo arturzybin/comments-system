@@ -22,7 +22,7 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
    const firebase = useContext(FirebaseContext)
    const authUser = useSelector((store: IStore) => store.authUserStore.authUser)
 
-   const [showResponseForm, setShowResponseForm] = useState<boolean>(false)
+   const [shouldShowResponseForm, setShouldShowResponseForm] = useState<boolean>(false)
 
 
    useEffect(() => {
@@ -38,8 +38,8 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
          .then((querySnapshot) => {
             const likesCount = querySnapshot.docs.length
             const isLiked = querySnapshot.docs.filter((doc) => doc.data().uid === authUser?.uid).length !== 0
-            dispatch( setCommentLikes(commentIndex, likesCount) )
-            dispatch( setIsCommentLiked(commentIndex, isLiked) )
+            dispatch(setCommentLikes(commentIndex, likesCount))
+            dispatch(setIsCommentLiked(commentIndex, isLiked))
          })
    }
 
@@ -56,14 +56,14 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
       const authUserLikeRef = firebase.commentLikesRef(comment.docRef as app.firestore.DocumentReference).doc(authUser?.uid)
 
       if (comment.isLiked) {
-         dispatch( setCommentLikes(commentIndex, comment.likesCount - 1) )
+         dispatch(setCommentLikes(commentIndex, comment.likesCount - 1))
          authUserLikeRef.delete()
       } else {
-         dispatch( setCommentLikes(commentIndex, comment.likesCount + 1) )
+         dispatch(setCommentLikes(commentIndex, comment.likesCount + 1))
          authUserLikeRef.set({ uid: authUser?.uid })
       }
 
-      dispatch( setIsCommentLiked(commentIndex, !comment.isLiked) )
+      dispatch(setIsCommentLiked(commentIndex, !comment.isLiked))
    }
 
 
@@ -72,10 +72,14 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
          history.push(ROUTES.SIGN_IN)
          return
       }
-      setShowResponseForm(!showResponseForm)
+      setShouldShowResponseForm(!shouldShowResponseForm)
    }
 
-   
+   function closeForm(): void {
+      setShouldShowResponseForm(false)
+   }
+
+
    const heartSrc = comment.isLiked ? filledHeart : heart
    const preparedText = comment.text.split('__n').map((par, index) => <p key={index}>{par}</p>)
 
@@ -84,14 +88,19 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
          <div className="message__author">{comment.authorUsername}</div>
          <div className="message__created">{moment.unix(comment.created.seconds).fromNow()}</div>
          <div className="message__text">{preparedText}</div>
-         
+
          <button className="message__like" onClick={handleLike}>
-            <img src={heartSrc} alt="like" width="20px"/>
+            <img src={heartSrc} alt="like" width="20px" />
             <span className="message__likes-count">{comment.likesCount}</span>
          </button>
          <button className="message__reply" onClick={handleReply}>Reply</button>
 
-         <Responses comment={comment} commentIndex={commentIndex} showForm={showResponseForm} />
+         <Responses
+            comment={comment}
+            commentIndex={commentIndex}
+            shouldShowForm={shouldShowResponseForm}
+            closeForm={closeForm}
+         />
       </div>
    )
 }

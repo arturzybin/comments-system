@@ -8,9 +8,9 @@ import { useResponsesLoading } from './useResponsesLoading'
 import { IComment } from '../../../../constants/typescript-types'
 
 
-type TProps = { comment: IComment, commentIndex: number, showForm: boolean }
+type TProps = { comment: IComment, commentIndex: number, shouldShowForm: boolean, closeForm: () => void }
 
-export const Responses: React.FC<TProps> = ({ comment, commentIndex, showForm }) => {
+export const Responses: React.FC<TProps> = ({ comment, commentIndex, shouldShowForm, closeForm }) => {
    const { responses, loadResponses, isResponsesOver, isLoading } = useResponsesLoading(comment, commentIndex)
 
    const responsesTemplate = responses?.map((response, index) => (
@@ -27,10 +27,11 @@ export const Responses: React.FC<TProps> = ({ comment, commentIndex, showForm })
 
    return (
       <div className="responses">
-         {showForm &&
+         {shouldShowForm &&
             <ResponseForm
                commentRef={comment.docRef as app.firestore.DocumentReference}
                commentIndex={commentIndex}
+               closeForm={closeForm}
             />
          }
          
