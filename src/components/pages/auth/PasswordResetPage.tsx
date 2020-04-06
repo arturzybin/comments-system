@@ -16,6 +16,8 @@ export const PasswordResetPage: React.FC = () => {
 
 
    function handleReset(): void {
+      if (isFormInvalid) return
+
       firebase
          .doPasswordReset(email)
          .then(() => {
