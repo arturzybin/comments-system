@@ -39,29 +39,28 @@ export const ResponseForm: React.FC<TProps> = ({ commentRef, commentIndex, close
 
       firebase
          .doCreateResponse(commentRef, response)
-         .then((docRef) => dispatch( createResponse(commentIndex, { ...response, docRef }) ))
+         .then((docRef) => dispatch(createResponse(commentIndex, { ...response, docRef })))
          .then(() => closeForm())
          .catch((error) => console.error("Error adding response: ", error))
    }
 
 
    return (
-      <form className="message-form" onSubmit={handleSubmit}>
-         <textarea
-         className="message-form__text"
-            value={text}
-            onChange={(event) => setText(event.target.value)}
-            maxLength={1000}
-            placeholder="Write a response..."
-         >
-         </textarea>
+      authUser
+         ?
+         <form className="message-form" onSubmit={handleSubmit}>
+            <textarea
+               className="message-form__text"
+               value={text}
+               onChange={(event) => setText(event.target.value)}
+               maxLength={1000}
+               placeholder="Write a response..."
+            >
+            </textarea>
 
-         {
-            authUser ?
             <button className="message-form__submit" type="submit" disabled={!text}>Reply as {username ? username : 'you'}</button>
-            :
-            <span className="message-form__sign-in"><Link to={ROUTES.SIGN_IN}>Sign in</Link> to publish</span>
-         }
-      </form>
+         </form>
+         :
+         <div className="message-form-sign-in"><Link to={ROUTES.SIGN_IN}>Sign in</Link> to write a response</div>
    )
 }

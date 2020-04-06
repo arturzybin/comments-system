@@ -9,8 +9,10 @@
       line-height: rem(20);
 
       display: inline-block;
+
+      cursor: default;
+
       color: $blue;
-      text-decoration: underline;
    }
 
    &__created {
@@ -22,6 +24,7 @@
 
       margin-left: rem(10);
 
+      cursor: default;
       vertical-align: middle;
 
       color: #989898;
@@ -49,6 +52,7 @@
       height: rem(20);
       padding: 0 rem(10);
 
+      cursor: pointer;
       vertical-align: top;
 
       border: none;
@@ -72,6 +76,8 @@
       height: rem(20);
       margin-bottom: rem(10);
       padding: 0 rem(5);
+
+      cursor: pointer;
 
       color: #747474;
       border: none;

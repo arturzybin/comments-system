@@ -38,7 +38,7 @@ export const CommentForm: React.FC = () => {
 
       firebase
          .doCreateComment(comment)
-         .then((docRef) => dispatch( createComment({ ...comment, docRef, responses: [], isResponsesOver: false }) ))
+         .then((docRef) => dispatch(createComment({ ...comment, docRef, responses: [], isResponsesOver: false })))
          .then(() => setText(''))
          .catch((error) => console.error("Error adding comment: ", error))
    }
@@ -47,21 +47,21 @@ export const CommentForm: React.FC = () => {
    const formClassname = text ? 'message-form' : 'message-form message-form_closed'
 
    return (
-      <form className={formClassname} onSubmit={handleSubmit}>
-         <textarea
-            className="message-form__text"
-            value={text}
-            onChange={(event) => setText(event.target.value)}
-            maxLength={1000}
-            placeholder="Write a comment..."
-         >
-         </textarea>
-         {
-            authUser ?
+      authUser
+         ?
+         <form className={formClassname} onSubmit={handleSubmit}>
+            <textarea
+               className="message-form__text"
+               value={text}
+               onChange={(event) => setText(event.target.value)}
+               maxLength={1000}
+               placeholder="Write a comment..."
+            >
+            </textarea>
+
             <button className="message-form__submit" type="submit" disabled={!text}>Write as {username ? username : 'you'}</button>
-            :
-            <span className="message-form__sign-in"><Link to={ROUTES.SIGN_IN}>Sign in</Link> to publish</span>
-         }
-      </form>
+         </form>
+         :
+         <div className="message-form-sign-in"><Link to={ROUTES.SIGN_IN}>Sign in</Link> to write a comment</div>
    )
 }

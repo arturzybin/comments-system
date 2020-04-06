@@ -1,6 +1,20 @@
 @import '../mixins';
 @import '../vars';
 
+
+.message-form-sign-in {
+   font-size: rem(20);
+
+   margin-bottom: rem(30);
+
+   cursor: default;
+   text-align: center;
+
+   a {
+      color: #000;
+   }
+}
+
 .message-form {
    position: relative;
 
@@ -51,11 +65,11 @@
 
       border: 2px solid #b9b9b9;
       border-top: none;
+      border-bottom-right-radius: rem(3);
+      border-bottom-left-radius: rem(3);
       outline: none;
       background-color: transparent;
       box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
-      border-bottom-left-radius: rem(3);
-      border-bottom-right-radius: rem(3);
 
       &:disabled,
       &:active {
