@@ -47,9 +47,9 @@ export const SignUpPage: React.FC = () => {
    let emailClassName = 'auth-form__input'
    let passwordOneClassName = 'auth-form__input'
    let passwordTwoClassName = 'auth-form__input'
-   usernameClassName += (username && username.length < 3 && username.length > 15) ? ' auth-form__input_invalid' : ''
+   usernameClassName += (username && (username.length < 3 || username.length > 15)) ? ' auth-form__input_invalid' : ''
    emailClassName += (email && !validator.validate(email)) ? ' auth-form__input_invalid' : ''
-   passwordOneClassName += (passwordOne && passwordOne.length < 6 && passwordOne.length > 25) ? ' auth-form__input_invalid' : ''
+   passwordOneClassName += (passwordOne && (passwordOne.length < 6 || passwordOne.length > 25)) ? ' auth-form__input_invalid' : ''
    passwordTwoClassName += (passwordTwo && passwordTwo !== passwordOne) ? ' auth-form__input_invalid' : ''
 
    const isFormInvalid =
