@@ -80,18 +80,18 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
    const preparedText = comment.text.split('__n').map((par, index) => <p key={index}>{par}</p>)
 
    return (
-      <div className="comment">
-         <div className="comment__author">{comment.authorUsername}</div>
-         <div className="comment__created">{moment.unix(comment.created.seconds).fromNow()}</div>
-         <div>{preparedText}</div>
+      <div className="message">
+         <div className="message__author">{comment.authorUsername}</div>
+         <div className="message__created">{moment.unix(comment.created.seconds).fromNow()}</div>
+         <div className="message__text">{preparedText}</div>
          
-         <button className="comment__like" onClick={handleLike}>
-            <img src={heartSrc} alt="like" width="20px"/>{comment.likesCount}
+         <button className="message__like" onClick={handleLike}>
+            <img src={heartSrc} alt="like" width="20px"/>
+            <span className="message__likes-count">{comment.likesCount}</span>
          </button>
-         <button className="comment__reply" onClick={handleReply}>Reply</button>
+         <button className="message__reply" onClick={handleReply}>Reply</button>
 
          <Responses comment={comment} commentIndex={commentIndex} showForm={showResponseForm} />
-         <hr />
       </div>
    )
 }
