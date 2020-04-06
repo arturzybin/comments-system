@@ -90,7 +90,7 @@ export const Comment: React.FC<TProps> = ({ comment, commentIndex }) => {
          <div className="message__text">{preparedText}</div>
 
          <button className="message__like" onClick={handleLike}>
-            <img src={heartSrc} alt="like" width="20px" />
+            <img src={heartSrc} alt="like" />
             <span className="message__likes-count">{comment.likesCount}</span>
          </button>
          <button className="message__reply" onClick={handleReply}>Reply</button>

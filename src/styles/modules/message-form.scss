@@ -43,7 +43,7 @@
       resize: none;
       transition: all .3s cubic-bezier(.25,.8,.25,1);
 
-      border: 2px solid #b9b9b9;
+      border: rem(2) solid #b9b9b9;
       border-radius: rem(10);
       outline: none;
 
@@ -63,19 +63,19 @@
       transition: all .3s cubic-bezier(.25,.8,.25,1);
       transform: rotateX(15deg);
 
-      border: 2px solid #b9b9b9;
+      border: rem(2) solid #b9b9b9;
       border-top: none;
       border-bottom-right-radius: rem(3);
       border-bottom-left-radius: rem(3);
       outline: none;
       background-color: transparent;
-      box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+      box-shadow: 0 rem(3) rem(6) rgba(0,0,0,.16), 0 rem(3) rem(6) rgba(0,0,0,.23);
 
       &:disabled,
       &:active {
          transform: none;
 
-         box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px;
+         box-shadow: 0 1px rem(3) rgba(0,0,0,.12), 0 1px rem(2);
       }
       &:focus {
          border-color: $red-brown;

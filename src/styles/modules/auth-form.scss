@@ -89,7 +89,7 @@
       text-align: center;
 
       border: none;
-      border-radius: 50px;
+      border-radius: rem(50);
       outline: none;
       background: $sea-green;
       box-shadow: inset rem(4) rem(4) rem(8) #6fa090,
@@ -112,7 +112,7 @@
    &__button {
       cursor: pointer;
 
-      border-radius: 50px;
+      border-radius: rem(50);
       background: linear-gradient(145deg, #76a998, #8cc9b5);
       box-shadow: rem(4) rem(4) rem(8) #6fa090,
       rem(-4) rem(-4) rem(8) #97d8c2;

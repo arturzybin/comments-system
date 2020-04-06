@@ -74,7 +74,7 @@ export const Response: React.FC<TProps> = ({ response, responseIndex, commentInd
          <div className="message__text">{preparedText}</div>
          
          <button className="message__like" onClick={handleLike}>
-            <img src={heartSrc} alt="like" width="20px"/>
+            <img src={heartSrc} alt="like"/>
             <span className="message__likes-count">{response.likesCount}</span>
          </button>
       </div>

@@ -58,6 +58,10 @@
       border: none;
       outline: none;
       background-color: transparent;
+
+      img {
+         width: rem(20);
+      }
    }
 
    &__likes-count {
