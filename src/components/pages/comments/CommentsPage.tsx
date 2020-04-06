@@ -22,15 +22,14 @@ export const CommentsPage: React.FC = () => {
    const showLoadButton: boolean = !isCommentsOver && !isLoading
 
    return (
-      // showLoader
-      //    ?
-      //    <Loading />
-      //    :
-      //    <div className="comments">
-      //       <CommentForm />
-      //       {commentsTemplate}
-      //       {showLoadButton && <button onClick={loadComments}>Load more comments</button>}
-      //    </div >
-      <Loading />
+      showLoader
+         ?
+         <Loading />
+         :
+         <div className="comments">
+            <CommentForm />
+            {commentsTemplate}
+            {showLoadButton && <button onClick={loadComments}>Load more comments</button>}
+         </div >
    )
 }
