@@ -175,6 +175,7 @@
 
    .auth-form {
       width: rem(300);
+      margin-top: rem(-100);
 
       &::after {
          height: calc(100vh - 3.75rem);
