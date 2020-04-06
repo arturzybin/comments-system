@@ -1,8 +1,10 @@
-# Project Title
+# Comments System
 
-One Paragraph of project description goes here
+Full-fledged comments system based on firebase, without a backend. Demo page available [here](https://arturzybin.github.io/comments-system)
 
-Available [here](https://arturzybin.github.io/) =)
+Connects to any page with one iframe, comments for every page will be unique.
+
+The registration system allows creating an account, log in, reset and change password. User can like comments and reply, replies also can be liked.
 
 ## Getting Started
 
@@ -16,45 +18,23 @@ You need to have Node.js installed on your machine
 
 To install all dependencies run ```npm install``` inside the project directory
 
-## Running the tests
-
-To start the tests run ```npm test``` inside the project directory
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## Running
 
 To run the project with the local server run ```npm start``` inside the project directory
 
-To build the **production** version of the project to a dist folder run ```npm run build``` inside the project directory
-
-To build the **development** version of the project to a dist folder run ```npm run dev``` inside the project directory
+To build the **production** version of the project to a 'build' folder run ```npm run build``` inside the project directory
 
 ## Built With
 
+* [Firebase](https://firebase.google.com/) - A mobile and web application development platform
+* [TypeScript](https://www.typescriptlang.org/) - An open-source programming language 
+* [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+* [Redux](https://redux.js.org) - A predictable state container for JavaScript apps
+* [React Router](https://reacttraining.com/react-router/) - The standard routing library for React
+* [Jest](https://jestjs.io) - A JavaScript testing framework
+* [Enzyme](https://enzymejs.github.io/enzyme/) - A JavaScript Testing utility for React
 * [Webpack](https://webpack.js.org/) - A static module bundler for JavaScript applications
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* [Moment.js](https://momentjs.com/) - A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates.
 
 ## Authors
 
@@ -63,9 +43,3 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
