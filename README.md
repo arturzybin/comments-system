@@ -2,7 +2,7 @@
 
 Full-fledged comments system based on firebase, without a backend. Demo page available [here](https://arturzybin.github.io/comments-system)
 
-Connects to any page with one iframe, comments for every page will be unique.
+Connects to any page with one iframe, comments are unique for every page.
 
 The registration system allows creating an account, log in, reset and change password. User can like comments and reply, replies also can be liked.
 
