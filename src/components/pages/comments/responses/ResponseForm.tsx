@@ -58,7 +58,7 @@ export const ResponseForm: React.FC<TProps> = ({ commentRef, commentIndex }) => 
 
          {
             authUser ?
-            <button className="message-form__submit" type="submit" disabled={!text}>Write as {username ? username : 'you'}</button>
+            <button className="message-form__submit" type="submit" disabled={!text}>Reply as {username ? username : 'you'}</button>
             :
             <span className="message-form__sign-in"><Link to={ROUTES.SIGN_IN}>Sign in</Link> to publish</span>
          }

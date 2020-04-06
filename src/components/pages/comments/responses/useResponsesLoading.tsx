@@ -16,7 +16,7 @@ export function useResponsesLoading(comment: IComment, commentIndex: number) {
    const limit: number = 10
 
    const responsesRef = firebase.responsesRef(comment.docRef as app.firestore.DocumentReference)
-   const [query, setQuery] = useState(responsesRef.orderBy('created', "desc").limit(limit))
+   const [query, setQuery] = useState(responsesRef.orderBy('created').limit(limit))
    const [loading, setLoading] = useState<boolean>(false)
    
    
