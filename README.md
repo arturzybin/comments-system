@@ -2,7 +2,11 @@
 
 Full-fledged comments system based on firebase, without a backend. Demo page available [here](https://arturzybin.github.io/comments-system)
 
-Connects to any page with one iframe, comments are unique for every page.
+Connects to any page with one script, comments are unique for every page.
+
+To connect add
+`<script src="https://cdn.jsdelivr.net/gh/ArturZybin/comments-system/connect.js"></script>`
+to your page
 
 The registration system allows creating an account, log in, reset and change password. User can like comments and reply, replies also can be liked.
 
@@ -35,6 +39,7 @@ To build the **production** version of the project to a 'build' folder run ```np
 * [Enzyme](https://enzymejs.github.io/enzyme/) - A JavaScript Testing utility for React
 * [Webpack](https://webpack.js.org/) - A static module bundler for JavaScript applications
 * [Moment.js](https://momentjs.com/) - A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates.
+* [JSDelivr](https://www.jsdelivr.com/) - Open Source CDN.
 
 ## Authors
 
